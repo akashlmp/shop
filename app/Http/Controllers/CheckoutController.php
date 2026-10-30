@@ -163,3 +163,4 @@ class CheckoutController extends Controller
         return view('storefront.checkout.confirmation', compact('order'));
     }
 }
+

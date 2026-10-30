@@ -174,3 +174,4 @@ class ProductController extends Controller
         return view('storefront.products.search', compact('products', 'search', 'collections'));
     }
 }
+

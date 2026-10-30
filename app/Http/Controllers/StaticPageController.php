@@ -41,3 +41,4 @@ class StaticPageController extends Controller
         return view('storefront.pages.terms');
     }
 }
+

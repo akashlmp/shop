@@ -25,3 +25,4 @@ class WebhookController extends Controller
         return response()->json(['status' => 'ignored or invalid signature'], 400);
     }
 }
+

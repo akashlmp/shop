@@ -102,3 +102,4 @@ class ShippingModifier extends BaseShippingModifier
         return $next($cart);
     }
 }
+

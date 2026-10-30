@@ -82,3 +82,4 @@ class AuthController extends Controller
         return redirect()->route('home')->with('success', 'You have been logged out.');
     }
 }
+
