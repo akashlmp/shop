@@ -149,7 +149,8 @@ class CheckoutController extends Controller
     public function confirmation(string $reference)
     {
         $order = Order::with([
-            'lines.purchasable',
+            'lines',
+            'productLines',
             'shippingAddress',
             'billingAddress',
             'transactions',

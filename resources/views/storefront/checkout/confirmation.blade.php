@@ -115,21 +115,21 @@
     <!-- Ordered Items Table -->
     <div class="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
         <div class="p-4 sm:p-5 border-b border-slate-100 font-bold text-sm text-slate-900">
-            Items in this Order ({{ $order->lines->count() }})
+            Items in this Order ({{ $order->productLines->count() }})
         </div>
 
         <div class="divide-y divide-slate-100 text-xs">
-            @foreach ($order->lines as $line)
+            @foreach ($order->productLines as $line)
                 <div class="p-4 flex items-center justify-between gap-4">
                     <div class="space-y-0.5">
                         <div class="font-bold text-slate-900">{{ $line->description }}</div>
                         <div class="text-slate-500 text-[11px]">
                             Qty: <strong class="text-slate-700">{{ $line->quantity }}</strong> &bull;
-                            Unit: {{ $line->unitPrice->formatted }}
+                            Unit: {{ $line->unit_price->formatted }}
                         </div>
                     </div>
                     <div class="font-black text-slate-900">
-                        {{ $line->subTotal->formatted }}
+                        {{ $line->sub_total->formatted }}
                     </div>
                 </div>
             @endforeach
@@ -139,21 +139,21 @@
         <div class="bg-slate-50 p-4 sm:p-5 border-t border-slate-100 space-y-1.5 text-xs">
             <div class="flex justify-between text-slate-600">
                 <span>Subtotal</span>
-                <span class="font-bold text-slate-800">{{ $order->subTotal->formatted }}</span>
+                <span class="font-bold text-slate-800">{{ $order->sub_total->formatted }}</span>
             </div>
-            @if ($order->discountTotal && $order->discountTotal->value > 0)
+            @if ($order->discount_total && $order->discount_total->value > 0)
                 <div class="flex justify-between text-emerald-700 font-bold">
                     <span>Promotional Discount</span>
-                    <span>-{{ $order->discountTotal->formatted }}</span>
+                    <span>-{{ $order->discount_total->formatted }}</span>
                 </div>
             @endif
             <div class="flex justify-between text-slate-600">
                 <span>Shipping</span>
-                <span>{{ $order->shippingTotal && $order->shippingTotal->value > 0 ? $order->shippingTotal->formatted : 'FREE' }}</span>
+                <span>{{ $order->shipping_total && $order->shipping_total->value > 0 ? $order->shipping_total->formatted : 'FREE' }}</span>
             </div>
             <div class="flex justify-between text-slate-500 text-[11px]">
                 <span>Taxes</span>
-                <span>{{ $order->taxTotal->formatted }}</span>
+                <span>{{ $order->tax_total->formatted }}</span>
             </div>
             <div class="border-t border-slate-200 pt-2 flex justify-between items-baseline font-black text-slate-900 text-base">
                 <span>Final Total</span>

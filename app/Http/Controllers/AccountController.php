@@ -49,7 +49,8 @@ class AccountController extends Controller
         $user = Auth::user();
 
         $order = Order::with([
-            'lines.purchasable',
+            'lines',
+            'productLines',
             'shippingAddress',
             'billingAddress',
             'transactions',
