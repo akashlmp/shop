@@ -34,6 +34,17 @@ class StoreDataSeeder extends Seeder
             \Illuminate\Support\Facades\Artisan::call('lunar:import:address-data');
         }
 
+        // 0.1 Ensure Staff admin exists
+        if (\Lunar\Admin\Models\Staff::count() === 0) {
+            \Lunar\Admin\Models\Staff::create([
+                'first_name' => 'Admin',
+                'last_name' => 'User',
+                'email' => 'admin@acelectronics.com',
+                'password' => \Illuminate\Support\Facades\Hash::make('AdminPassword123!'),
+                'admin' => true,
+            ]);
+        }
+
         // 1. Channel
         $channel = Channel::firstOrCreate(
             ['handle' => 'webstore'],

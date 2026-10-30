@@ -2,12 +2,17 @@
 
 namespace App\Providers;
 
+use App\Managers\PaymentManager;
 use App\Models\DeliveryArea;
 use App\Models\ProductMetadata;
 use App\Modifiers\ShippingModifier;
+use App\PaymentTypes\CashOnDeliveryPayment;
+use App\PaymentTypes\RazorpayPayment;
 use Illuminate\Support\ServiceProvider;
 use Lunar\Admin\Support\Facades\LunarPanel;
+use Lunar\Base\PaymentManagerInterface;
 use Lunar\Base\ShippingModifiers;
+use Lunar\Facades\Payments;
 use Lunar\Models\Product;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
                 ->path('admin')
                 ->brandName('A&C Electronics');
         })->register();
+
+        // Bind our resilient PaymentManager
+        $this->app->singleton(PaymentManagerInterface::class, function ($app) {
+            return $app->make(PaymentManager::class);
+        });
     }
 
     /**
@@ -29,6 +39,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Register custom payment drivers
+        Payments::extend('cash-on-delivery', function ($app) {
+            return $app->make(CashOnDeliveryPayment::class);
+        });
+
+        Payments::extend('razorpay', function ($app) {
+            return $app->make(RazorpayPayment::class);
+        });
+
         // Register custom shipping modifier
         app(ShippingModifiers::class)->add(ShippingModifier::class);
 

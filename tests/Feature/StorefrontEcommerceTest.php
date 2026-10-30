@@ -508,4 +508,117 @@ class StorefrontEcommerceTest extends TestCase
         $response = $this->get('/admin');
         $response->assertRedirect('/admin/login');
     }
+
+    protected function createTestOrder(): \Lunar\Models\Order
+    {
+        $cartManager = app(\App\Services\CartManager::class);
+        $cartManager->clear();
+        $variant = \Lunar\Models\ProductVariant::where('stock', '>=', 5)->first();
+        $cartManager->add($variant, 1);
+        $country = \Lunar\Models\Country::first();
+        $cartManager->setAddresses([
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+            'line_one' => '10 Downing Street',
+            'city' => 'London',
+            'postcode' => 'SW1A 2AA',
+            'country_id' => $country->id,
+            'contact_email' => 'john.doe@example.com',
+            'contact_phone' => '+44 7700 900077',
+        ]);
+        $cartManager->setShippingOption('standard-delivery');
+        $cart = $cartManager->getCart();
+        $order = $cart->createOrder();
+        $paymentService = app(\App\Services\PaymentService::class);
+        $paymentService->processCodPayment($order);
+
+        return $order;
+    }
+
+    public function test_authorized_staff_can_view_order_in_admin(): void
+    {
+        $staff = \Lunar\Admin\Models\Staff::firstOrCreate(
+            ['email' => 'admin@acelectronics.com'],
+            [
+                'first_name' => 'Admin',
+                'last_name' => 'User',
+                'password' => \Illuminate\Support\Facades\Hash::make('AdminPassword123!'),
+                'admin' => true,
+            ]
+        );
+
+        $order = $this->createTestOrder();
+
+        $response = $this->actingAs($staff, 'staff')
+            ->get("/admin/orders/{$order->id}");
+
+        $response->assertStatus(200);
+        $response->assertSee($order->reference);
+    }
+
+    public function test_authorized_staff_can_view_razorpay_order_in_admin(): void
+    {
+        $staff = \Lunar\Admin\Models\Staff::firstOrCreate(
+            ['email' => 'admin@acelectronics.com'],
+            [
+                'first_name' => 'Admin',
+                'last_name' => 'User',
+                'password' => \Illuminate\Support\Facades\Hash::make('AdminPassword123!'),
+                'admin' => true,
+            ]
+        );
+
+        $order = $this->createTestOrder();
+
+        // Add a razorpay transaction to the order
+        $order->transactions()->create([
+            'success' => true,
+            'type' => 'capture',
+            'driver' => 'razorpay',
+            'amount' => 1500,
+            'reference' => 'pay_test12345678',
+            'status' => 'paid',
+            'notes' => 'Test Razorpay payment',
+            'card_type' => 'online',
+        ]);
+
+        $response = $this->actingAs($staff, 'staff')
+            ->get("/admin/orders/{$order->id}");
+
+        $response->assertStatus(200);
+        $response->assertSee('pay_test12345678');
+    }
+
+    public function test_admin_order_view_falls_back_gracefully_on_unknown_driver(): void
+    {
+        $staff = \Lunar\Admin\Models\Staff::firstOrCreate(
+            ['email' => 'admin@acelectronics.com'],
+            [
+                'first_name' => 'Admin',
+                'last_name' => 'User',
+                'password' => \Illuminate\Support\Facades\Hash::make('AdminPassword123!'),
+                'admin' => true,
+            ]
+        );
+
+        $order = $this->createTestOrder();
+
+        // Add a transaction with an unknown/custom driver
+        $order->transactions()->create([
+            'success' => true,
+            'type' => 'capture',
+            'driver' => 'custom-legacy-gateway',
+            'amount' => 2000,
+            'reference' => 'LEGACY-999',
+            'status' => 'completed',
+            'notes' => 'Legacy transaction',
+            'card_type' => 'visa',
+        ]);
+
+        $response = $this->actingAs($staff, 'staff')
+            ->get("/admin/orders/{$order->id}");
+
+        $response->assertStatus(200);
+        $response->assertSee('LEGACY-999');
+    }
 }
