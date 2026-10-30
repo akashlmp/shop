@@ -2,7 +2,6 @@
 
 namespace App\Modifiers;
 
-use App\Models\DeliveryArea;
 use Closure;
 use Lunar\Base\ShippingModifier as BaseShippingModifier;
 use Lunar\DataTypes\Price;
@@ -34,13 +33,13 @@ class ShippingModifier extends BaseShippingModifier
             });
         }
 
-        // 1. Standard Delivery (€2.99, free for orders above €35.00)
-        $standardCost = $subTotal >= 3500 ? 0 : 299;
+        // 1. Standard Tracked Parcel Delivery (€4.99, free for orders above €50.00)
+        $standardCost = $subTotal >= 5000 ? 0 : 499;
         $standardOption = new ShippingOption(
-            name: 'Standard Home Delivery',
-            description: $subTotal >= 3500
-                ? 'FREE Delivery (Qualifies for Free Standard Delivery on orders €35+)'
-                : 'Delivered in 1-2 business days safely to your door.',
+            name: 'Standard Tracked Courier',
+            description: $subTotal >= 5000
+                ? 'FREE Delivery (Qualifies for Free Tracked Delivery on orders €50+)'
+                : 'Delivered in 2-4 business days with full online tracking.',
             identifier: 'standard-delivery',
             price: new Price($standardCost, $currency, 1),
             taxClass: $taxClass,
@@ -48,49 +47,29 @@ class ShippingModifier extends BaseShippingModifier
         );
         ShippingManifest::addOption($standardOption);
 
-        // 2. Express Quick-Commerce Delivery (if postcode is in delivery area)
-        $postcode = $cart->shippingAddress?->postcode;
-        $matchedArea = null;
-        if ($postcode) {
-            $matchedArea = DeliveryArea::findByPostcode($postcode);
-        }
+        // 2. Priority Air Express Delivery (1-2 business days)
+        $expressOption = new ShippingOption(
+            name: 'Priority Air Express (1-2 Days)',
+            description: 'Fast priority air dispatch with transit insurance and signature upon delivery.',
+            identifier: 'express-delivery',
+            price: new Price(999, $currency, 1),
+            taxClass: $taxClass,
+            collect: false
+        );
+        ShippingManifest::addOption($expressOption);
 
-        if ($matchedArea) {
-            $quickCost = (int) $matchedArea->shipping_fee;
-            $quickOption = new ShippingOption(
-                name: "⚡ Express Quick Delivery ({$matchedArea->delivery_time_minutes} Mins)",
-                description: "Hyperlocal rapid dispatch from {$matchedArea->name}. Fresh and chilled pack.",
-                identifier: 'express-delivery',
-                price: new Price($quickCost, $currency, 1),
-                taxClass: $taxClass,
-                collect: false
-            );
-            ShippingManifest::addOption($quickOption);
-        } else {
-            // General Express option
-            $expressOption = new ShippingOption(
-                name: '⚡ Express Delivery (Within 2 Hours)',
-                description: 'Fast priority packing and temperature-controlled dispatch.',
-                identifier: 'express-delivery',
-                price: new Price(399, $currency, 1),
-                taxClass: $taxClass,
-                collect: false
-            );
-            ShippingManifest::addOption($expressOption);
-        }
-
-        // 3. Wholesale Freight Dispatch (for bulk orders)
+        // 3. B2B Commercial Freight & Master Carton Dispatch (for bulk orders)
         $hasBulkItems = $cart->lines->some(function ($line) {
             return $line->quantity >= 5 || (isset($line->meta['is_bulk']) && $line->meta['is_bulk']);
         });
 
-        if ($hasBulkItems || $subTotal >= 5000) {
-            $freightCost = $subTotal >= 10000 ? 0 : 499;
+        if ($hasBulkItems || $subTotal >= 10000) {
+            $freightCost = $subTotal >= 25000 ? 0 : 1999;
             $bulkOption = new ShippingOption(
-                name: 'Heavy Freight & Wholesale Dispatch',
-                description: $subTotal >= 10000
-                    ? 'FREE Bulk Commercial Freight (Orders €100+)'
-                    : 'Palletized careful shipping for heavy cartons, sacks & wholesale quantities.',
+                name: 'B2B Cargo & Pallet Freight',
+                description: $subTotal >= 25000
+                    ? 'FREE B2B Freight (Orders over €250+)'
+                    : 'Reinforced palletized dispatch for carton quantities, commercial invoices & export packing.',
                 identifier: 'bulk-freight',
                 price: new Price($freightCost, $currency, 1),
                 taxClass: $taxClass,
@@ -102,4 +81,3 @@ class ShippingModifier extends BaseShippingModifier
         return $next($cart);
     }
 }
-

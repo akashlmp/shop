@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Models\DeliveryArea;
 use App\Models\ProductMetadata;
 use App\Models\User;
 use App\Services\CartManager;
@@ -27,8 +26,8 @@ class StorefrontEcommerceTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSee('LUNAR');
-        $response->assertSee('Groceries');
+        $response->assertSee('NEXORA');
+        $response->assertSee('Delivering Excellence');
     }
 
     public function test_products_catalog_page_renders_with_products(): void
@@ -36,7 +35,7 @@ class StorefrontEcommerceTest extends TestCase
         $response = $this->get('/products');
 
         $response->assertStatus(200);
-        $response->assertSee('All Products');
+        $response->assertSee('All Electronics');
     }
 
     public function test_retail_experience_page_renders(): void
@@ -52,15 +51,14 @@ class StorefrontEcommerceTest extends TestCase
         $response = $this->get('/bulk-buy');
 
         $response->assertStatus(200);
-        $response->assertSee('Bulk Buy');
+        $response->assertSee('Wholesale');
     }
 
-    public function test_quick_shop_experience_page_renders(): void
+    public function test_quick_shop_feature_is_completely_removed(): void
     {
+        // Quick shop route was completely removed as requested
         $response = $this->get('/quick-shop');
-
-        $response->assertStatus(200);
-        $response->assertSee('Quick Shop');
+        $response->assertStatus(404);
     }
 
     public function test_static_pages_render(): void
@@ -71,12 +69,12 @@ class StorefrontEcommerceTest extends TestCase
         $this->get('/terms')->assertStatus(200)->assertSee('Terms of Service');
     }
 
-    public function test_product_search_finds_matching_products(): void
+    public function test_product_search_finds_matching_electronics(): void
     {
-        $response = $this->get('/search?q=Basmati');
+        $response = $this->get('/search?q=Lenovo');
 
         $response->assertStatus(200);
-        $response->assertSee('Basmati');
+        $response->assertSee('Lenovo');
     }
 
     public function test_product_search_handles_no_matches_gracefully(): void
@@ -89,10 +87,12 @@ class StorefrontEcommerceTest extends TestCase
 
     public function test_category_filtering_returns_filtered_products(): void
     {
-        $collection = Collection::first();
-        $this->assertNotNull($collection, 'A collection should exist in the seeded database');
+        $collection = Collection::whereHas('urls', function ($q) {
+            $q->where('slug', 'tws-earbuds');
+        })->first() ?? Collection::first();
+        $this->assertNotNull($collection, 'An electronics collection should exist in the seeded database');
 
-        $slug = $collection->urls->first()?->slug ?? 'rice-grains';
+        $slug = $collection->urls->first()?->slug ?? 'tws-earbuds';
         $response = $this->get('/products?category=' . urlencode($slug));
 
         $response->assertStatus(200);
@@ -101,9 +101,10 @@ class StorefrontEcommerceTest extends TestCase
     public function test_product_detail_page_loads_with_variants_and_pricing(): void
     {
         $product = Product::with('urls')->first();
-        $this->assertNotNull($product, 'A product should exist');
+        $this->assertNotNull($product, 'An electronics product should exist');
 
-        $slug = $product->urls->first()?->slug ?? 'ratnagiri-alphonso-mangoes-box-6';
+        $slug = $product->urls->first()?->slug;
+        $this->assertNotNull($slug);
         $response = $this->get('/product/' . $slug);
 
         $response->assertStatus(200);
@@ -125,6 +126,31 @@ class StorefrontEcommerceTest extends TestCase
         $cartResponse = $this->get('/cart');
         $cartResponse->assertStatus(200);
         $cartResponse->assertSee($variant->product->translateAttribute('name'));
+    }
+
+    public function test_ajax_add_to_cart_returns_json_without_page_reload(): void
+    {
+        $variant = ProductVariant::where('stock', '>', 5)->first();
+        $this->assertNotNull($variant);
+
+        $response = $this->postJson('/cart/add', [
+            'variant_id' => $variant->id,
+            'quantity' => 1,
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJson([
+            'success' => true,
+        ]);
+        $response->assertJsonStructure([
+            'success',
+            'message',
+            'summary' => [
+                'total_items',
+                'sub_total_formatted',
+                'total_formatted',
+            ],
+        ]);
     }
 
     public function test_cart_update_quantity_and_remove_item(): void
@@ -153,7 +179,7 @@ class StorefrontEcommerceTest extends TestCase
         $this->assertNotNull($variant);
 
         // Try adding more than available stock
-        $excessQuantity = $variant->stock + 5000;
+        $excessQuantity = $variant->stock + 50000;
         $response = $this->post('/cart/add', [
             'variant_id' => $variant->id,
             'quantity' => $excessQuantity,
@@ -219,27 +245,6 @@ class StorefrontEcommerceTest extends TestCase
         $this->assertGreaterThan(0, $summary['discount_total']);
     }
 
-    public function test_delivery_serviceability_check_by_postcode(): void
-    {
-        // 400001 is seeded as South Mumbai Delivery Hub
-        $serviceableResponse = $this->postJson('/cart/check-serviceability', [
-            'postcode' => '400001',
-        ]);
-        $serviceableResponse->assertStatus(200);
-        $serviceableResponse->assertJson([
-            'serviceable' => true,
-        ]);
-
-        // 999999 is unserviceable
-        $unserviceableResponse = $this->postJson('/cart/check-serviceability', [
-            'postcode' => '999999',
-        ]);
-        $unserviceableResponse->assertStatus(200);
-        $unserviceableResponse->assertJson([
-            'serviceable' => false,
-        ]);
-    }
-
     public function test_shipping_cost_calculation(): void
     {
         $cartManager = app(CartManager::class);
@@ -250,7 +255,7 @@ class StorefrontEcommerceTest extends TestCase
 
         $variant = ProductVariant::where('stock', '>=', 10)->first();
 
-        // 1 item - order under 35 EUR should have standard shipping
+        // 1 item - order under 50 EUR should have standard shipping
         $cartManager->add($variant, 1);
         $cartManager->setAddresses([
             'country_id' => $country->id,
@@ -316,15 +321,15 @@ class StorefrontEcommerceTest extends TestCase
         ]);
 
         $response = $this->post('/checkout/process', [
-            'first_name' => 'Ramesh',
-            'last_name' => 'Sharma',
-            'line_one' => 'Flat 402, Lotus Towers',
-            'city' => 'Mumbai',
-            'state' => 'Maharashtra',
-            'postcode' => '400001',
+            'first_name' => 'Alex',
+            'last_name' => 'Vance',
+            'line_one' => 'Unit 12, Terminal Cargo Park',
+            'city' => 'London',
+            'state' => 'Greater London',
+            'postcode' => 'E14 5AB',
             'country_id' => $country->id,
-            'contact_email' => 'ramesh.sharma@example.com',
-            'contact_phone' => '+91 9876543210',
+            'contact_email' => 'alex.vance@example.com',
+            'contact_phone' => '+44 7700 900123',
             'shipping_option' => 'standard-delivery',
             'payment_method' => 'cod',
         ]);
@@ -359,14 +364,14 @@ class StorefrontEcommerceTest extends TestCase
         $cartManager->add($variant, 1);
         $cartManager->setAddresses([
             'country_id' => $country->id,
-            'first_name' => 'Amit',
-            'last_name' => 'Patel',
-            'line_one' => '12 MG Road',
-            'city' => 'Bengaluru',
-            'state' => 'Karnataka',
-            'postcode' => '560001',
-            'contact_email' => 'amit@example.com',
-            'contact_phone' => '+91 9820012345',
+            'first_name' => 'David',
+            'last_name' => 'Miller',
+            'line_one' => '12 Commercial Road',
+            'city' => 'Manchester',
+            'state' => 'Greater Manchester',
+            'postcode' => 'M1 1AE',
+            'contact_email' => 'david@example.com',
+            'contact_phone' => '+44 7700 900555',
         ]);
         $cartManager->setShippingOption('standard-delivery');
 
@@ -390,14 +395,14 @@ class StorefrontEcommerceTest extends TestCase
         $cartManager->add($variant, 1);
         $cartManager->setAddresses([
             'country_id' => $country->id,
-            'first_name' => 'Pooja',
-            'last_name' => 'Mehta',
-            'line_one' => '88 Bandra West',
-            'city' => 'Mumbai',
-            'state' => 'Maharashtra',
-            'postcode' => '400050',
-            'contact_email' => 'pooja@example.com',
-            'contact_phone' => '+91 9988776655',
+            'first_name' => 'Sophia',
+            'last_name' => 'Chen',
+            'line_one' => '88 Silicon Wharf',
+            'city' => 'Bristol',
+            'state' => 'Bristol',
+            'postcode' => 'BS1 4AA',
+            'contact_email' => 'sophia@example.com',
+            'contact_phone' => '+44 7700 900888',
         ]);
         $cartManager->setShippingOption('standard-delivery');
 
@@ -439,14 +444,14 @@ class StorefrontEcommerceTest extends TestCase
         $cartManager->add($variant, 1);
         $cartManager->setAddresses([
             'country_id' => $country->id,
-            'first_name' => 'Pooja',
-            'last_name' => 'Mehta',
-            'line_one' => '88 Bandra West',
-            'city' => 'Mumbai',
-            'state' => 'Maharashtra',
-            'postcode' => '400050',
-            'contact_email' => 'pooja@example.com',
-            'contact_phone' => '+91 9988776655',
+            'first_name' => 'Sophia',
+            'last_name' => 'Chen',
+            'line_one' => '88 Silicon Wharf',
+            'city' => 'Bristol',
+            'state' => 'Bristol',
+            'postcode' => 'BS1 4AA',
+            'contact_email' => 'sophia@example.com',
+            'contact_phone' => '+44 7700 900888',
         ]);
         $cartManager->setShippingOption('standard-delivery');
 
@@ -478,7 +483,7 @@ class StorefrontEcommerceTest extends TestCase
         $uniqueEmail = 'customer_' . uniqid() . '@example.com';
 
         $response = $this->post('/register', [
-            'name' => 'Priya Nair',
+            'name' => 'Robert Taylor',
             'email' => $uniqueEmail,
             'password' => 'SecurePass123!',
             'password_confirmation' => 'SecurePass123!',
@@ -489,7 +494,7 @@ class StorefrontEcommerceTest extends TestCase
 
         $user = User::where('email', $uniqueEmail)->first();
         $this->assertNotNull($user);
-        $this->assertEquals('Priya Nair', $user->name);
+        $this->assertEquals('Robert Taylor', $user->name);
     }
 
     public function test_unauthenticated_user_cannot_access_order_history(): void
@@ -500,9 +505,7 @@ class StorefrontEcommerceTest extends TestCase
 
     public function test_unauthorized_user_cannot_access_lunar_admin(): void
     {
-        // Guest user attempting to visit Lunar admin dashboard
         $response = $this->get('/lunar');
-        // Filament redirects unauthenticated staff to /lunar/login
         $response->assertRedirect('/lunar/login');
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Shopping Cart - Lunar Store')
+@section('title', 'Shopping Cart - Nexora Global')
 
 @section('content')
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 space-y-8">
@@ -8,7 +8,7 @@
     <div class="flex items-center justify-between border-b border-slate-200 pb-4">
         <div>
             <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">Your Shopping Cart</h1>
-            <p class="text-xs text-slate-500 mt-1">Review your items, apply promotional coupons, and proceed to checkout</p>
+            <p class="text-xs text-slate-500 mt-1">Review selected electronics models, apply B2B trade coupons, and proceed to checkout</p>
         </div>
         @if ($summary['total_items'] > 0)
             <form action="{{ route('cart.clear') }}" method="POST">
@@ -33,21 +33,21 @@
                                 
                                 <!-- Product Info & Image -->
                                 <div class="flex items-center gap-4">
-                                    <div class="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-slate-50 border border-slate-100">
+                                    <div class="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-slate-900/5 border border-slate-100">
                                         <img src="{{ $line['image_url'] }}" alt="{{ $line['name'] }}" class="h-full w-full object-cover object-center">
                                     </div>
                                     <div class="space-y-1">
                                         @if ($line['is_bulk'])
-                                            <span class="inline-block rounded bg-amber-100 text-amber-800 text-[9px] font-black uppercase px-1.5 py-0.5">
-                                                📦 Wholesale Bulk Pack
+                                            <span class="inline-block rounded bg-amber-100 text-amber-900 text-[9px] font-black uppercase px-2 py-0.5 border border-amber-200">
+                                                📦 Master Carton Wholesale Tier
                                             </span>
                                         @endif
                                         <h3 class="text-sm font-bold text-slate-900 leading-tight">
                                             {{ $line['name'] }}
                                         </h3>
                                         <div class="text-xs text-slate-500">
-                                            Unit: {{ ucfirst($line['unit_of_measure']) }} &bull;
-                                            <span class="font-bold text-slate-700">{{ $line['unit_price_formatted'] }}</span> each
+                                            Packaging: {{ ucfirst($line['unit_of_measure']) }} &bull;
+                                            <span class="font-bold text-slate-900">{{ $line['unit_price_formatted'] }}</span> each
                                         </div>
                                     </div>
                                 </div>
@@ -96,50 +96,21 @@
                     </div>
                 </div>
 
-                <!-- Express Delivery Pincode Check Box in Cart -->
-                <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm" x-data="{
-                    postcode: '{{ session('quick_postcode', '') }}',
-                    checkResult: null,
-                    isChecking: false,
-                    checkService() {
-                        if(!this.postcode) return;
-                        this.isChecking = true;
-                        fetch('{{ route('cart.check-serviceability') }}', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                            },
-                            body: JSON.stringify({ postcode: this.postcode })
-                        })
-                        .then(r => r.json())
-                        .then(d => {
-                            this.isChecking = false;
-                            this.checkResult = d;
-                        });
-                    }
-                }">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                        <div class="space-y-0.5">
-                            <h4 class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                                <span>⚡ Delivery Estimation by Postal Code</span>
-                            </h4>
-                            <p class="text-[11px] text-slate-500">Check if your address qualifies for 15-Minute Instant Express Delivery</p>
+                <!-- Global Freight Assurance Notice -->
+                <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                    <div class="flex items-center gap-3">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                            ✈️
                         </div>
-
-                        <div class="flex items-center gap-2">
-                            <input type="text" x-model="postcode" placeholder="Postal Code (e.g. 400001)" class="rounded-xl border border-slate-300 py-1.5 px-3 text-xs font-bold text-slate-800 focus:ring-emerald-500">
-                            <button type="button" @click="checkService()" class="rounded-xl bg-slate-900 text-white px-3 py-1.5 text-xs font-bold hover:bg-slate-800">
-                                Check
-                            </button>
+                        <div class="space-y-0.5">
+                            <h4 class="text-xs font-bold text-slate-900">
+                                International Tracked Shipping &amp; Pallet Freight
+                            </h4>
+                            <p class="text-[11px] text-slate-500">
+                                Free standard tracked parcel delivery on orders over €50.00. Free B2B commercial cargo pallet freight on bulk orders over €250.00.
+                            </p>
                         </div>
                     </div>
-
-                    <template x-if="checkResult">
-                        <div class="mt-3 p-2.5 rounded-xl text-xs font-bold" :class="checkResult.serviceable ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-slate-100 text-slate-700'">
-                            <span x-text="checkResult.message"></span>
-                        </div>
-                    </template>
                 </div>
 
             </div>
@@ -150,7 +121,7 @@
                 <!-- Coupon Box -->
                 <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm space-y-3">
                     <h3 class="text-xs font-black uppercase tracking-wider text-slate-900">
-                        Apply Promo Coupon
+                        Apply Trade Coupon
                     </h3>
 
                     @if ($summary['coupon_code'])
@@ -168,13 +139,13 @@
                     @else
                         <form action="{{ route('cart.coupon') }}" method="POST" class="flex gap-2">
                             @csrf
-                            <input type="text" name="coupon_code" placeholder="Enter coupon (e.g. WELCOME10, BULK15)" class="flex-1 rounded-xl border border-slate-300 px-3 py-2 text-xs font-bold uppercase text-slate-800 focus:border-emerald-500 focus:ring-emerald-500">
-                            <button type="submit" class="rounded-xl bg-emerald-600 hover:bg-emerald-700 px-4 py-2 text-xs font-extrabold text-white transition active:scale-95 shadow">
+                            <input type="text" name="coupon_code" placeholder="Coupon (e.g. WELCOME10, B2B50)" class="flex-1 rounded-xl border border-slate-300 px-3 py-2 text-xs font-bold uppercase text-slate-800 focus:border-indigo-500 focus:ring-indigo-500">
+                            <button type="submit" class="rounded-xl bg-indigo-600 hover:bg-indigo-500 px-4 py-2 text-xs font-extrabold text-white transition active:scale-95 shadow">
                                 Apply
                             </button>
                         </form>
                         <div class="text-[10px] text-slate-400">
-                            Try: <strong class="text-slate-600">WELCOME10</strong> (10% off) or <strong class="text-slate-600">BULK15</strong> (€15 off)
+                            Try: <strong class="text-slate-700">WELCOME10</strong> (10% off) or <strong class="text-slate-700">B2B50</strong> (€50 off bulk)
                         </div>
                     @endif
                 </div>
@@ -192,14 +163,14 @@
                         </div>
 
                         @if ($summary['discount_total'] > 0)
-                            <div class="flex justify-between text-emerald-700 font-bold">
+                            <div class="flex justify-between text-indigo-600 font-bold">
                                 <span>Promotional Discount</span>
                                 <span>-{{ $summary['discount_total_formatted'] }}</span>
                             </div>
                         @endif
 
                         <div class="flex justify-between text-slate-600">
-                            <span>Estimated Shipping</span>
+                            <span>Estimated Freight</span>
                             @if ($summary['shipping_total'] > 0)
                                 <span class="font-bold text-slate-900">{{ $summary['shipping_total_formatted'] }}</span>
                             @else
@@ -213,19 +184,19 @@
                         </div>
 
                         <div class="border-t border-slate-100 pt-3 flex justify-between items-baseline">
-                            <span class="text-sm font-black text-slate-900">Final Total</span>
-                            <span class="text-2xl font-black text-emerald-700">{{ $summary['total_formatted'] }}</span>
+                            <span class="text-sm font-black text-slate-900">Total Payable</span>
+                            <span class="text-2xl font-black text-indigo-600">{{ $summary['total_formatted'] }}</span>
                         </div>
                     </div>
 
-                    <a href="{{ route('checkout.index') }}" class="w-full rounded-2xl bg-emerald-600 hover:bg-emerald-700 py-3.5 px-4 text-sm font-black text-white shadow-lg shadow-emerald-600/30 transition active:scale-95 flex items-center justify-center gap-2">
+                    <a href="{{ route('checkout.index') }}" class="w-full rounded-2xl bg-indigo-600 hover:bg-indigo-500 py-3.5 px-4 text-sm font-black text-white shadow-lg shadow-indigo-600/30 transition active:scale-95 flex items-center justify-center gap-2">
                         <span>Proceed to Secure Checkout</span>
                         <span>&rarr;</span>
                     </a>
 
                     <div class="text-center">
-                        <a href="{{ route('products.index') }}" class="text-xs font-semibold text-slate-500 hover:text-emerald-600 transition">
-                            &larr; Continue Shopping
+                        <a href="{{ route('products.index') }}" class="text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
+                            &larr; Continue Sourcing Products
                         </a>
                     </div>
                 </div>
@@ -236,16 +207,16 @@
     @else
         <!-- Empty Cart -->
         <div class="rounded-3xl border border-dashed border-slate-300 bg-white p-16 text-center max-w-lg mx-auto space-y-4">
-            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-50 text-3xl">
+            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-indigo-50 text-3xl">
                 🛒
             </div>
             <h2 class="text-xl font-black text-slate-900">Your cart is empty</h2>
             <p class="text-xs text-slate-500 leading-relaxed">
-                Discover our fresh fruits, dairy, whole spices, royal basmati rice, and wholesale packs ready for immediate delivery.
+                Discover Lenovo &amp; AOC acoustic audio, ANC wireless earbuds, smartwatches, and computer accessories ready for immediate delivery.
             </p>
             <div class="pt-2 flex flex-col sm:flex-row justify-center gap-2">
-                <a href="{{ route('products.index') }}" class="rounded-xl bg-emerald-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-emerald-700 shadow">
-                    Shop Retail Groceries
+                <a href="{{ route('products.index') }}" class="rounded-xl bg-indigo-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-indigo-500 shadow">
+                    Shop Retail Catalog
                 </a>
                 <a href="{{ route('experience.bulk') }}" class="rounded-xl bg-amber-400 px-5 py-2.5 text-xs font-bold text-slate-950 hover:bg-amber-500 shadow">
                     Shop Wholesale Bulk
@@ -256,4 +227,3 @@
 
 </div>
 @endsection
-

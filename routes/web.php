@@ -26,10 +26,9 @@ Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product
 Route::get('/category/{slug}', [ProductController::class, 'category'])->name('products.category');
 Route::get('/search', [ProductController::class, 'search'])->name('products.search');
 
-// 3. Three Shopping Experiences
+// 3. Shopping Experiences: Retail & Bulk Wholesale
 Route::get('/retail', [ShoppingExperienceController::class, 'retail'])->name('experience.retail');
 Route::get('/bulk-buy', [ShoppingExperienceController::class, 'bulkBuy'])->name('experience.bulk');
-Route::get('/quick-shop', [ShoppingExperienceController::class, 'quickShop'])->name('experience.quick');
 
 // 4. Cart Operations
 Route::prefix('cart')->name('cart.')->group(function () {

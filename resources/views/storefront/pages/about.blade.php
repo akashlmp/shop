@@ -1,54 +1,53 @@
 @extends('layouts.app')
 
-@section('title', 'About Our Mandi & E-Commerce Platform - Lunar Store')
+@section('title', 'About Us - Nexora Global')
 
 @section('content')
 <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12 space-y-10">
 
     <div class="text-center space-y-3">
-        <span class="rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black uppercase px-3 py-1">
-            Our Story &amp; Mission
+        <span class="rounded-full bg-indigo-100 text-indigo-800 text-[10px] font-black uppercase px-3.5 py-1">
+            Our Mission &amp; Trade Infrastructure
         </span>
         <h1 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            Bridging Authentic Agriculture with Ultra-Fast Commerce
+            Connecting Markets, Delivering Excellence
         </h1>
         <p class="text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
-            From the fertile orchards of Ratnagiri and the aromatic Tarai basmati belt to your doorstep in 15 minutes.
+            Direct factory distribution and international commerce for certified Lenovo acoustic systems, AOC gaming gear, ANC wireless audio, and consumer peripherals.
         </p>
     </div>
 
     <div class="rounded-3xl border border-slate-200 bg-white p-6 sm:p-10 shadow-sm space-y-8 text-xs sm:text-sm text-slate-600 leading-relaxed">
         
         <div class="space-y-3">
-            <h2 class="text-base font-black text-slate-900 uppercase tracking-wide">1. Authentic Direct Sourcing</h2>
+            <h2 class="text-base font-black text-slate-900 uppercase tracking-wide">1. Direct OEM &amp; Factory Alliances</h2>
             <p>
-                Lunar Commerce was built on the premise that genuine regional staples shouldn't lose their character or nutrition in long, murky supply chains. We partner directly with certified farmer collectives: Alphonso mango growers in Devgad, unpolished dal farmers in Latur, traditional stone-ground chakki millers in Madhya Pradesh, and dairy cooperatives in Gujarat.
+                Nexora Global was established to streamline cross-border consumer electronics procurement. By eliminating redundant middlemen and working directly with manufacturer production lines, we provide certified genuine Lenovo audio devices and AOC peripherals with guaranteed CE, FCC, and RoHS certifications.
             </p>
         </div>
 
         <div class="space-y-3">
-            <h2 class="text-base font-black text-slate-900 uppercase tracking-wide">2. Three Unified Shopping Modes</h2>
+            <h2 class="text-base font-black text-slate-900 uppercase tracking-wide">2. Dual Commerce Architecture: Retail &amp; Master Carton Wholesale</h2>
             <p>
-                We believe customers need different shopping rhythms for different occasions:
+                Our platform seamlessly accommodates both single-unit consumers and commercial wholesale buyers:
             </p>
-            <ul class="list-disc list-inside space-y-1 pl-2">
-                <li><strong>🛒 Retail Store:</strong> Daily fresh vegetables, milk, bakery loaves, and cooking essentials in standard single-pack quantities.</li>
-                <li><strong>📦 Wholesale Bulk Buy:</strong> Heavy 5kg/10kg sacks, master cartons, and wholesale boxes with volume savings for families, caterers, and small businesses.</li>
-                <li><strong>⚡ Quick Shop (15-Min Delivery):</strong> Hyperlocal micro-fulfillment centers holding cold-chain items ready for instant dispatch to your home or office.</li>
+            <ul class="list-disc list-inside space-y-1.5 pl-2 text-slate-700 font-medium">
+                <li><strong>🛍️ Retail Showcase:</strong> Individual units of flagship TWS earbuds, ANC headsets, smartwatches, and mice with fast tracked delivery.</li>
+                <li><strong>📦 B2B Wholesale Portal:</strong> Transparent volume tier breaks starting at 5 units, with deep wholesale carton rates (50–100 pcs) for commercial resellers, regional retail chains, and corporate procurement.</li>
             </ul>
         </div>
 
         <div class="space-y-3">
-            <h2 class="text-base font-black text-slate-900 uppercase tracking-wide">3. Powered by Lunar PHP &amp; Laravel 11</h2>
+            <h2 class="text-base font-black text-slate-900 uppercase tracking-wide">3. Built on Enterprise Laravel 11 &amp; Lunar PHP</h2>
             <p>
-                Underneath our storefront is a modern, headless e-commerce engine powered by Lunar PHP. We utilize robust database transactions, server-side HMAC cryptographic signature verification for online payments, strict inventory reservation, and reliable tax and shipping pipelines.
+                Nexora Global is engineered with high-performance Laravel 11 and Lunar headless commerce architecture. Our platform guarantees real-time stock reservations, cryptographic HMAC SHA256 payment signature verification, integer-precision multi-currency calculation, and dynamic AJAX cart interactions.
             </p>
         </div>
 
-        <div class="rounded-2xl bg-emerald-50 p-6 border border-emerald-200 text-xs font-semibold text-emerald-900 space-y-2">
-            <div class="font-extrabold text-sm text-emerald-950">Our Quality Promise</div>
+        <div class="rounded-2xl bg-indigo-50 p-6 border border-indigo-200 text-xs font-semibold text-indigo-950 space-y-2">
+            <div class="font-extrabold text-sm text-indigo-900">Our International Trade Guarantee</div>
             <p>
-                If any fresh produce or grocery item arrives bruised, spoiled, or unsatisfactory, our doorstep return policy ensures instant credits or replacement without complicated questionnaires.
+                Every master carton ships with factory anti-tamper security seals, full commercial packing lists, and manufacturer warranties.
             </p>
         </div>
 
@@ -56,4 +55,3 @@
 
 </div>
 @endsection
-

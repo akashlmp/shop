@@ -15,6 +15,13 @@ class ProductMetadata extends Model
 
     protected $fillable = [
         'product_id',
+        'brand',
+        'model_code',
+        'chipset',
+        'battery_specs',
+        'carton_specs',
+        'specs',
+        'colors',
         'unit_of_measure',
         'is_retail',
         'is_bulk',
@@ -33,6 +40,8 @@ class ProductMetadata extends Model
         'is_quick_commerce' => 'boolean',
         'bulk_min_quantity' => 'integer',
         'quick_delivery_minutes' => 'integer',
+        'specs' => 'array',
+        'colors' => 'array',
     ];
 
     public function product(): BelongsTo

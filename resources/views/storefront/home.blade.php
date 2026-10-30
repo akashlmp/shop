@@ -1,108 +1,92 @@
 @extends('layouts.app')
 
-@section('title', 'Fresh Indian Groceries & Wholesale Merchandise')
+@section('title', 'Nexora Global - Connecting Markets, Delivering Excellence')
 
 @section('content')
-<div class="space-y-12 pb-16">
+<div class="space-y-14 pb-20">
 
     <!-- 1. Hero Section -->
-    <section class="relative overflow-hidden bg-gradient-to-br from-emerald-800 via-emerald-900 to-slate-950 text-white py-12 md:py-16">
-        <div class="absolute inset-0 bg-[radial-gradient(#22c55e_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+    <section class="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white py-14 md:py-20 border-b border-slate-800">
+        <div class="absolute inset-0 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:24px_24px] opacity-15"></div>
         <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 
                 <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 border border-emerald-400/30 px-3.5 py-1 text-xs font-bold text-emerald-300">
-                        <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
-                        Authentic Sourcing &bull; 15-Min Quick Commerce &bull; Wholesale Packs
+                    <div class="inline-flex items-center gap-2 rounded-full bg-indigo-500/15 border border-indigo-500/30 px-4 py-1 text-xs font-bold text-indigo-300">
+                        <span class="flex h-2 w-2 rounded-full bg-cyan-400 animate-ping"></span>
+                        Authorized Global Electronics Trading &bull; B2B &amp; Retail
                     </div>
 
                     <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white">
-                        Your Daily Fresh Mandi &amp; Wholesale Store in One Place
+                        Global Electronics Trading. <br class="hidden sm:inline">
+                        <span class="bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-300 bg-clip-text text-transparent">
+                            Delivering Excellence.
+                        </span>
                     </h1>
 
-                    <p class="text-sm sm:text-base text-emerald-100/90 max-w-xl leading-relaxed">
-                        Handpicked Alphonso mangoes, organic unpolished pulses, 2-year aged Royal Basmati rice, and pure cow ghee. Delivered in 15 minutes or ordered in bulk cartons with up to 25% wholesale savings.
+                    <p class="text-sm sm:text-base text-slate-300 max-w-xl leading-relaxed">
+                        Direct-from-factory distribution of Lenovo and AOC acoustic hardware, Active Noise Cancelling headphones, AMOLED smartwatches, and computer peripherals. Available for single unit retail or master carton export containers.
                     </p>
 
-                    <!-- Interactive Pincode Checker Bar -->
-                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/15 max-w-lg shadow-xl" x-data="{
-                        postcode: '{{ session('quick_postcode', '400001') }}',
-                        statusMsg: '',
-                        isChecking: false,
-                        checkArea() {
-                            if(!this.postcode) return;
-                            this.isChecking = true;
-                            fetch('{{ route('cart.check-serviceability') }}', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                                },
-                                body: JSON.stringify({ postcode: this.postcode })
-                            })
-                            .then(res => res.json())
-                            .then(data => {
-                                this.isChecking = false;
-                                this.statusMsg = data.message;
-                            })
-                            .catch(() => {
-                                this.isChecking = false;
-                                this.statusMsg = 'Service check unavailable right now.';
-                            });
-                        }
-                    }">
-                        <div class="flex gap-2">
-                            <div class="relative flex-1">
-                                <input type="text" x-model="postcode" placeholder="Enter Pincode (e.g. 400001, 110001, SW1A 1AA)..." class="w-full rounded-xl border-0 bg-white/95 px-3.5 py-2.5 text-xs font-bold text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-emerald-400">
-                            </div>
-                            <button type="button" @click="checkArea()" :disabled="isChecking" class="rounded-xl bg-amber-400 hover:bg-amber-500 px-4 py-2.5 text-xs font-extrabold text-slate-950 transition active:scale-95 shadow">
-                                <span x-show="!isChecking">Check Express Delivery</span>
-                                <span x-show="isChecking">Checking...</span>
-                            </button>
+                    <!-- Trade Highlights / Quick Stats -->
+                    <div class="grid grid-cols-3 gap-3 max-w-lg pt-1">
+                        <div class="rounded-xl border border-slate-800 bg-slate-900/80 p-3 text-center">
+                            <span class="block text-xl font-black text-cyan-400">30+</span>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Models in Stock</span>
                         </div>
-                        <div x-show="statusMsg" class="mt-2 text-[11px] font-bold text-amber-300" x-text="statusMsg"></div>
+                        <div class="rounded-xl border border-slate-800 bg-slate-900/80 p-3 text-center">
+                            <span class="block text-xl font-black text-indigo-400">Up to 40%</span>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Carton Savings</span>
+                        </div>
+                        <div class="rounded-xl border border-slate-800 bg-slate-900/80 p-3 text-center">
+                            <span class="block text-xl font-black text-emerald-400">100%</span>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">CE &amp; RoHS Tested</span>
+                        </div>
                     </div>
 
                     <!-- CTA Buttons -->
-                    <div class="flex flex-wrap gap-3 pt-2">
-                        <a href="{{ route('experience.retail') }}" class="rounded-xl bg-emerald-500 hover:bg-emerald-600 px-5 py-3 text-xs font-extrabold text-white shadow-lg shadow-emerald-500/30 transition active:scale-95">
-                            🛒 Shop Retail Groceries
+                    <div class="flex flex-wrap gap-3 pt-3">
+                        <a href="{{ route('products.index') }}" class="rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 px-6 py-3.5 text-xs font-black text-white shadow-xl shadow-indigo-600/30 transition active:scale-95 flex items-center gap-2">
+                            <span>Browse All Electronics</span>
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </a>
-                        <a href="{{ route('experience.bulk') }}" class="rounded-xl bg-amber-400 hover:bg-amber-500 px-5 py-3 text-xs font-extrabold text-slate-950 shadow-lg shadow-amber-400/20 transition active:scale-95">
-                            📦 Wholesale Bulk Buy
+                        <a href="{{ route('experience.bulk') }}" class="rounded-xl bg-amber-400 hover:bg-amber-300 px-6 py-3.5 text-xs font-black text-slate-950 shadow-xl shadow-amber-400/20 transition active:scale-95 flex items-center gap-2">
+                            <span>📦 Bulk Wholesale Portal</span>
                         </a>
-                        <a href="{{ route('experience.quick') }}" class="rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 px-5 py-3 text-xs font-extrabold text-white transition">
-                            ⚡ 15-Min Quick Shop
+                        <a href="{{ route('experience.retail') }}" class="rounded-xl bg-slate-800/90 hover:bg-slate-800 border border-slate-700 px-6 py-3.5 text-xs font-bold text-slate-200 transition">
+                            Retail Catalog
                         </a>
                     </div>
                 </div>
 
-                <!-- Right Hero Showcase Cards -->
+                <!-- Right Hero Feature Cards -->
                 <div class="lg:col-span-5 grid grid-cols-2 gap-3.5">
-                    <div class="rounded-2xl bg-white/10 backdrop-blur-md p-4 border border-white/15 space-y-2">
-                        <div class="text-2xl">🥭</div>
-                        <h4 class="text-xs font-extrabold text-white">Alphonso Mangoes</h4>
-                        <p class="text-[11px] text-emerald-200">GI Certified Ratnagiri harvest, carbide-free.</p>
-                        <span class="inline-block text-xs font-black text-amber-300">From €14.99 / Box</span>
+                    <div class="rounded-2xl bg-slate-900/80 backdrop-blur-md p-4 border border-slate-800 space-y-2">
+                        <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-500/20 text-indigo-400 font-bold">🎧</div>
+                        <h4 class="text-xs font-extrabold text-white">Lenovo EA Series</h4>
+                        <p class="text-[11px] text-slate-400">Bluetooth 5.3 &amp; 5.4 Jerry cores, composite diaphragms.</p>
+                        <span class="inline-block text-xs font-black text-cyan-400">Retail from €5.99</span>
                     </div>
-                    <div class="rounded-2xl bg-white/10 backdrop-blur-md p-4 border border-white/15 space-y-2">
-                        <div class="text-2xl">🌾</div>
-                        <h4 class="text-xs font-extrabold text-white">Royal Basmati</h4>
-                        <p class="text-[11px] text-emerald-200">2-Year aged super-long pearl grains.</p>
-                        <span class="inline-block text-xs font-black text-amber-300">From €12.99 Bulk</span>
+
+                    <div class="rounded-2xl bg-slate-900/80 backdrop-blur-md p-4 border border-slate-800 space-y-2">
+                        <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-500/20 text-cyan-400 font-bold">🔇</div>
+                        <h4 class="text-xs font-extrabold text-white">AOC Hybrid ANC</h4>
+                        <p class="text-[11px] text-slate-400">-40dB Active Noise Cancellation &amp; Realtek DSP.</p>
+                        <span class="inline-block text-xs font-black text-cyan-400">Retail from €14.99</span>
                     </div>
-                    <div class="rounded-2xl bg-white/10 backdrop-blur-md p-4 border border-white/15 space-y-2">
-                        <div class="text-2xl">🥛</div>
-                        <h4 class="text-xs font-extrabold text-white">Pure Desi Ghee</h4>
-                        <p class="text-[11px] text-emerald-200">Granular golden aroma, traditional standards.</p>
-                        <span class="inline-block text-xs font-black text-amber-300">1 Litre Tin €11.99</span>
+
+                    <div class="rounded-2xl bg-slate-900/80 backdrop-blur-md p-4 border border-slate-800 space-y-2">
+                        <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500/20 text-amber-400 font-bold">⌚</div>
+                        <h4 class="text-xs font-extrabold text-white">Smartwatches</h4>
+                        <p class="text-[11px] text-slate-400">1.96" Borderless screens, Bluetooth calls, SpO2 &amp; IP68.</p>
+                        <span class="inline-block text-xs font-black text-amber-400">Retail from €18.99</span>
                     </div>
-                    <div class="rounded-2xl bg-white/10 backdrop-blur-md p-4 border border-white/15 space-y-2">
-                        <div class="text-2xl">⚡</div>
-                        <h4 class="text-xs font-extrabold text-white">Hyperlocal Hubs</h4>
-                        <p class="text-[11px] text-emerald-200">Chilled rapid dispatch in 15 minutes.</p>
-                        <span class="inline-block text-xs font-black text-amber-300">7 Active Hubs</span>
+
+                    <div class="rounded-2xl bg-slate-900/80 backdrop-blur-md p-4 border border-slate-800 space-y-2">
+                        <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400 font-bold">⚖️</div>
+                        <h4 class="text-xs font-extrabold text-white">Diagnostic Scales</h4>
+                        <p class="text-[11px] text-slate-400">Full-surface ITO glass, Fitdays app sync &amp; VA color LCD.</p>
+                        <span class="inline-block text-xs font-black text-emerald-400">Retail from €9.99</span>
                     </div>
                 </div>
 
@@ -110,78 +94,64 @@
         </div>
     </section>
 
-    <!-- 2. Categories Navigation Grid -->
+    <!-- 2. Categories Section -->
     <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between mb-6">
             <div>
-                <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Explore Categories</h2>
-                <p class="text-xs text-slate-500">Carefully curated fresh staples, groceries and pantry items</p>
+                <h2 class="text-xl sm:text-2xl font-black tracking-tight text-slate-900">Electronics Categories</h2>
+                <p class="text-xs text-slate-500 mt-1">Explore our 7 certified hardware and consumer electronic departments</p>
             </div>
-            <a href="{{ route('products.index') }}" class="text-xs font-bold text-emerald-600 hover:text-emerald-700 transition flex items-center gap-1">
-                <span>View All 24 Products</span>
-                <span>&rarr;</span>
+            <a href="{{ route('products.index') }}" class="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+                View All Categories &rarr;
             </a>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3.5">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 sm:gap-4">
             @foreach ($collections as $collection)
                 @php
-                    $slug = $collection->urls->first()?->slug ?? 'category';
-                    $icons = [
-                        'fresh-produce' => '🥬',
-                        'dairy-bakery' => '🧀',
-                        'pantry-staples' => '🌾',
-                        'spices-oils' => '🌶️',
-                        'beverages' => '☕',
-                        'snacks-sweets' => '🍪',
-                    ];
-                    $icon = $icons[$slug] ?? '🛒';
+                    $catUrl = $collection->urls->first()?->slug ?? $collection->id;
+                    $catName = $collection->translateAttribute('name');
                 @endphp
-                <a href="{{ route('products.category', $slug) }}" class="group flex flex-col items-center justify-center rounded-2xl border border-slate-200/90 bg-white p-4 text-center shadow-sm hover:shadow-md hover:border-emerald-500 transition">
-                    <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-2xl group-hover:scale-110 transition duration-200 shadow-inner">
-                        {{ $icon }}
+                <a href="{{ route('products.category', $catUrl) }}" class="group flex flex-col items-center text-center p-3.5 rounded-2xl border border-slate-200/80 bg-white hover:border-indigo-500 hover:shadow-lg transition duration-200">
+                    <div class="h-16 w-16 rounded-xl bg-slate-100 flex items-center justify-center overflow-hidden mb-2.5 group-hover:scale-105 transition">
+                        @if ($collection->slug === 'tws-earbuds')
+                            <span class="text-2xl">🎧</span>
+                        @elseif ($collection->slug === 'anc-audio')
+                            <span class="text-2xl">🔇</span>
+                        @elseif ($collection->slug === 'open-ear-sports')
+                            <span class="text-2xl">🏃</span>
+                        @elseif ($collection->slug === 'gaming-over-ear')
+                            <span class="text-2xl">🎮</span>
+                        @elseif ($collection->slug === 'smartwatches-wearables')
+                            <span class="text-2xl">⌚</span>
+                        @elseif ($collection->slug === 'computer-mice')
+                            <span class="text-2xl">🖱️</span>
+                        @elseif ($collection->slug === 'smart-scales')
+                            <span class="text-2xl">⚖️</span>
+                        @else
+                            <span class="text-2xl">⚡</span>
+                        @endif
                     </div>
-                    <h3 class="mt-3 text-xs font-bold text-slate-800 group-hover:text-emerald-600 transition leading-tight line-clamp-2">
-                        {{ $collection->translateAttribute('name') }}
+                    <h3 class="text-xs font-bold text-slate-800 group-hover:text-indigo-600 transition leading-tight line-clamp-2">
+                        {{ $catName }}
                     </h3>
                 </a>
             @endforeach
         </div>
     </section>
 
-    <!-- 3. Quick Commerce 15-Minute Express Flash Items -->
-    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="rounded-3xl bg-gradient-to-r from-indigo-900 via-indigo-800 to-purple-900 p-6 sm:p-8 text-white shadow-lg">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                <div>
-                    <div class="inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-slate-950 mb-2 shadow">
-                        ⚡ 15-MINUTE EXPRESS DISPATCH
-                    </div>
-                    <h2 class="text-xl sm:text-2xl font-black tracking-tight text-white">Need Groceries in a Flash?</h2>
-                    <p class="text-xs text-indigo-200">Chilled dairy, leafy greens, morning breakfast staples dispatched immediately.</p>
-                </div>
-                <a href="{{ route('experience.quick') }}" class="self-start md:self-auto rounded-xl bg-white px-4 py-2.5 text-xs font-black text-indigo-950 hover:bg-indigo-50 shadow transition active:scale-95">
-                    Open Quick Shop Mode &rarr;
-                </a>
-            </div>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
-                @foreach ($quickShopProducts as $qProduct)
-                    <x-quick-product-card :product="$qProduct" />
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. Featured Daily Groceries (Retail) -->
+    <!-- 3. Featured Electronic Products Grid -->
     <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between mb-6">
             <div>
-                <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Daily Grocery Essentials</h2>
-                <p class="text-xs text-slate-500">Retail single items, pure ingredients, certified quality</p>
+                <div class="flex items-center gap-2">
+                    <h2 class="text-xl sm:text-2xl font-black tracking-tight text-slate-900">Featured Releases</h2>
+                    <span class="rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black px-2 py-0.5 uppercase tracking-wide">Lenovo &amp; AOC</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">High-demand acoustic devices and peripherals with dynamic cart adding</p>
             </div>
-            <a href="{{ route('experience.retail') }}" class="text-xs font-bold text-emerald-600 hover:text-emerald-700 transition">
-                Explore Full Retail Store &rarr;
+            <a href="{{ route('products.index') }}" class="text-xs font-bold text-indigo-600 hover:text-indigo-800">
+                View All Products &rarr;
             </a>
         </div>
 
@@ -192,56 +162,87 @@
         </div>
     </section>
 
-    <!-- 5. Wholesale Bulk Buy Deals (Volume Savings) -->
-    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="rounded-3xl border-2 border-amber-300 bg-gradient-to-b from-amber-50/70 to-white p-6 sm:p-8 shadow-md">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+    <!-- 4. High-Performance Audio Spotlight (TWS & Gaming) -->
+    <section class="bg-slate-900 py-12 text-white">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
                 <div>
-                    <span class="inline-flex items-center gap-1.5 rounded-md bg-amber-500 px-2.5 py-0.5 text-[10px] font-black uppercase text-slate-950 mb-2 shadow-sm">
-                        📦 WHOLESALE &amp; BULK SAVERS
-                    </span>
-                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Buy in Bulk, Save Big</h2>
-                    <p class="text-xs text-slate-600">Master cartons, 5kg sacks, and wholesale packaging with automatic tiered discounts.</p>
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-cyan-400">Wireless Acoustic Engineering</span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white mt-1">TWS Earbuds &amp; Low-Latency Gaming</h2>
+                    <p class="text-xs text-slate-400 mt-1">Equipped with Jerry &amp; Bluetrum low-latency chips and composite dynamic horns</p>
                 </div>
-                <a href="{{ route('experience.bulk') }}" class="self-start md:self-auto rounded-xl bg-amber-500 hover:bg-amber-600 px-4 py-2.5 text-xs font-black text-slate-950 transition shadow active:scale-95">
-                    Browse All Bulk Deals &rarr;
+                <a href="{{ route('products.category', 'tws-earbuds') }}" class="rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-2 text-xs font-bold text-slate-200 hover:bg-slate-700 transition">
+                    Explore All Audio &rarr;
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                @foreach ($bulkBuyProducts as $bulkProduct)
-                    <x-bulk-product-card :product="$bulkProduct" />
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 text-slate-900">
+                @foreach ($twsProducts as $product)
+                    <x-product-card :product="$product" />
                 @endforeach
             </div>
         </div>
     </section>
 
-    <!-- 6. Serviceable Delivery Areas Section -->
+    <!-- 5. B2B Wholesale / Master Carton Section -->
     <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-                    <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
-                    Active Express Delivery Hubs &amp; Coverage
-                </h3>
-                <span class="text-xs text-slate-400">All standard postal codes supported nationwide</span>
+        <div class="rounded-3xl border border-amber-200 bg-gradient-to-br from-amber-50 via-white to-orange-50 p-6 sm:p-10 shadow-sm">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                <div class="max-w-2xl space-y-4">
+                    <div class="inline-flex items-center gap-1.5 rounded-full bg-amber-400/20 border border-amber-400/30 px-3 py-1 text-xs font-extrabold text-amber-800">
+                        📦 Commercial Exporters &amp; B2B Distributors
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-slate-900">
+                        Save Up to 40% with Master Carton Volume Tiers
+                    </h2>
+                    <p class="text-xs sm:text-sm leading-relaxed text-slate-600">
+                        Whether sourcing 5 units for your store or full master cartons (50–100 pcs) for international resale, Nexora Global provides transparent pricing breaks, gross weight specs, and palletized commercial air cargo dispatch.
+                    </p>
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <a href="{{ route('experience.bulk') }}" class="rounded-xl bg-amber-500 hover:bg-amber-600 px-6 py-3 text-xs font-black text-slate-950 shadow-md shadow-amber-500/20 transition active:scale-95">
+                            Enter Bulk Wholesale Portal &rarr;
+                        </a>
+                        <a href="{{ route('page.contact') }}" class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 transition">
+                            Request Container Quote
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 sm:gap-4 lg:w-96">
+                    <div class="rounded-2xl border border-amber-200/80 bg-white p-4 shadow-sm">
+                        <span class="text-xs font-bold text-slate-400">Minimum Order</span>
+                        <h4 class="text-xl font-black text-slate-900 mt-1">5 Units</h4>
+                        <p class="text-[11px] text-slate-500 mt-1">Low barrier for testing new models</p>
+                    </div>
+                    <div class="rounded-2xl border border-amber-200/80 bg-white p-4 shadow-sm">
+                        <span class="text-xs font-bold text-slate-400">Master Carton</span>
+                        <h4 class="text-xl font-black text-amber-600 mt-1">50-100 Pcs</h4>
+                        <p class="text-[11px] text-slate-500 mt-1">Factory carton export packaging</p>
+                    </div>
+                    <div class="rounded-2xl border border-amber-200/80 bg-white p-4 shadow-sm">
+                        <span class="text-xs font-bold text-slate-400">International Cargo</span>
+                        <h4 class="text-xl font-black text-indigo-600 mt-1">Air &amp; Pallet</h4>
+                        <p class="text-[11px] text-slate-500 mt-1">Free freight over €250+</p>
+                    </div>
+                    <div class="rounded-2xl border border-amber-200/80 bg-white p-4 shadow-sm">
+                        <span class="text-xs font-bold text-slate-400">Compliance</span>
+                        <h4 class="text-xl font-black text-emerald-600 mt-1">CE / RoHS</h4>
+                        <p class="text-[11px] text-slate-500 mt-1">Full documentation provided</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 text-xs">
-                @foreach ($deliveryAreas as $area)
-                    <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
-                        <div class="flex items-center justify-between font-bold text-slate-800">
-                            <span>{{ $area->city }}</span>
-                            <span class="rounded bg-emerald-100 text-emerald-800 px-1.5 py-0.5 text-[10px] font-extrabold">{{ $area->delivery_time_minutes }}m</span>
-                        </div>
-                        <div class="text-[11px] text-slate-500 mt-1">{{ $area->name }}</div>
-                        <div class="text-[10px] font-mono font-bold text-slate-400 mt-0.5">Postcode: {{ $area->postcode }}</div>
-                    </div>
-                @endforeach
+            <!-- Bulk Products Preview -->
+            <div class="mt-8 pt-8 border-t border-amber-200/70">
+                <h3 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider mb-4">Popular Wholesale Models</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
+                    @foreach ($bulkBuyProducts->take(3) as $p)
+                        <x-product-card :product="$p" />
+                    @endforeach
+                </div>
             </div>
         </div>
     </section>
 
 </div>
 @endsection
-
