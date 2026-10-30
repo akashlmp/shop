@@ -621,4 +621,25 @@ class StorefrontEcommerceTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('LEGACY-999');
     }
+
+    public function test_order_statuses_include_shipped_and_delivered_and_can_be_updated(): void
+    {
+        $statuses = config('lunar.orders.statuses');
+
+        $this->assertArrayHasKey('processing', $statuses);
+        $this->assertArrayHasKey('dispatched', $statuses);
+        $this->assertArrayHasKey('shipped', $statuses);
+        $this->assertArrayHasKey('delivered', $statuses);
+        $this->assertArrayHasKey('cancelled', $statuses);
+
+        $order = $this->createTestOrder();
+
+        // Update to shipped
+        $order->update(['status' => 'shipped']);
+        $this->assertEquals('shipped', $order->fresh()->status);
+
+        // Update to delivered
+        $order->update(['status' => 'delivered']);
+        $this->assertEquals('delivered', $order->fresh()->status);
+    }
 }

@@ -31,12 +31,12 @@
                 <div class="font-extrabold text-emerald-800 text-[11px]">Placed</div>
             </div>
             <div class="space-y-1">
-                <div class="mx-auto flex h-8 w-8 items-center justify-center rounded-full {{ in_array($order->status, ['processing', 'payment-received', 'dispatched', 'delivered']) ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-500' }} font-bold text-xs">✓</div>
+                <div class="mx-auto flex h-8 w-8 items-center justify-center rounded-full {{ in_array($order->status, ['processing', 'payment-received', 'dispatched', 'shipped', 'delivered']) ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-500' }} font-bold text-xs">✓</div>
                 <div class="font-bold text-slate-700 text-[11px]">Processing</div>
             </div>
             <div class="space-y-1">
-                <div class="mx-auto flex h-8 w-8 items-center justify-center rounded-full {{ in_array($order->status, ['dispatched', 'delivered']) ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-500' }} font-bold text-xs">3</div>
-                <div class="font-bold text-slate-500 text-[11px]">Dispatched</div>
+                <div class="mx-auto flex h-8 w-8 items-center justify-center rounded-full {{ in_array($order->status, ['dispatched', 'shipped', 'delivered']) ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-500' }} font-bold text-xs">3</div>
+                <div class="font-bold text-slate-500 text-[11px]">Shipped / Dispatched</div>
             </div>
             <div class="space-y-1">
                 <div class="mx-auto flex h-8 w-8 items-center justify-center rounded-full {{ $order->status === 'delivered' ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-500' }} font-bold text-xs">4</div>

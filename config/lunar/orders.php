@@ -86,8 +86,49 @@ return [
             'favourite' => true,
         ],
 
+        'processing' => [
+            'label' => 'Processing',
+            'color' => '#eab308',
+            'mailers' => [],
+            'notifications' => [],
+            'favourite' => true,
+        ],
+
         'dispatched' => [
             'label' => 'Dispatched',
+            'color' => '#3b82f6',
+            'mailers' => [],
+            'notifications' => [],
+            'favourite' => true,
+        ],
+
+        'shipped' => [
+            'label' => 'Shipped',
+            'color' => '#06b6d4',
+            'mailers' => [],
+            'notifications' => [],
+            'favourite' => true,
+        ],
+
+        'delivered' => [
+            'label' => 'Delivered',
+            'color' => '#10b981',
+            'mailers' => [],
+            'notifications' => [],
+            'favourite' => true,
+        ],
+
+        'cancelled' => [
+            'label' => 'Cancelled',
+            'color' => '#ef4444',
+            'mailers' => [],
+            'notifications' => [],
+            'favourite' => true,
+        ],
+
+        'refunded' => [
+            'label' => 'Refunded',
+            'color' => '#64748b',
             'mailers' => [],
             'notifications' => [],
             'favourite' => true,

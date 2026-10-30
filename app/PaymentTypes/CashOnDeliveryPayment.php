@@ -60,7 +60,7 @@ class CashOnDeliveryPayment extends AbstractPayment
             message: 'Cash on Delivery (Doorstep)'
         ));
 
-        $isCollected = ($transaction->status === 'paid' || $transaction->captured_at !== null);
+        $isCollected = ($transaction->status === 'paid' || $transaction->captured_at !== null || $transaction->order?->status === 'delivered');
 
         $checks->addCheck(new PaymentCheck(
             successful: $isCollected,
@@ -113,3 +113,4 @@ class CashOnDeliveryPayment extends AbstractPayment
         return new PaymentRefund(success: true);
     }
 }
+
