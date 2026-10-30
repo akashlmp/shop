@@ -505,7 +505,7 @@ class StorefrontEcommerceTest extends TestCase
 
     public function test_unauthorized_user_cannot_access_lunar_admin(): void
     {
-        $response = $this->get('/lunar');
-        $response->assertRedirect('/lunar/login');
+        $response = $this->get('/admin');
+        $response->assertRedirect('/admin/login');
     }
 }

@@ -41,7 +41,7 @@
             <div class="flex items-center space-x-4 text-xs">
                 <span class="hidden md:inline text-slate-400">Global Logistics: +44 20 7946 0991</span>
                 <a href="{{ route('page.contact') }}" class="hover:text-white transition">Trade Desk</a>
-                <a href="{{ url('/lunar') }}" target="_blank" class="rounded bg-indigo-600/30 px-2 py-0.5 text-[11px] font-bold text-indigo-300 hover:text-white hover:bg-indigo-600 transition">
+                <a href="{{ url('/admin') }}" target="_blank" class="rounded bg-indigo-600/30 px-2 py-0.5 text-[11px] font-bold text-indigo-300 hover:text-white hover:bg-indigo-600 transition">
                     Admin Portal &rarr;
                 </a>
             </div>
@@ -331,7 +331,7 @@
                         <li><a href="{{ route('account.orders') }}" class="hover:text-cyan-400 transition">Track Consignment</a></li>
                         <li><a href="{{ route('account.addresses') }}" class="hover:text-cyan-400 transition">Delivery Addresses</a></li>
                         <li><a href="{{ route('page.contact') }}" class="hover:text-cyan-400 transition">Export Trade Inquiries</a></li>
-                        <li><a href="{{ url('/lunar') }}" target="_blank" class="hover:text-indigo-400 transition font-semibold text-indigo-300">Admin Control Panel</a></li>
+                        <li><a href="{{ url('/admin') }}" target="_blank" class="hover:text-indigo-400 transition font-semibold text-indigo-300">Admin Control Panel</a></li>
                     </ul>
                 </div>
 
