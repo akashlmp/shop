@@ -39,7 +39,6 @@ Route::prefix('cart')->name('cart.')->group(function () {
     Route::post('/clear', [CartController::class, 'clear'])->name('clear');
     Route::post('/coupon', [CartController::class, 'applyCoupon'])->name('coupon');
     Route::post('/coupon/remove', [CartController::class, 'removeCoupon'])->name('coupon.remove');
-    Route::post('/check-serviceability', [CartController::class, 'checkServiceability'])->name('check-serviceability');
 });
 
 // 5. Checkout
