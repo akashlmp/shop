@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'About Us - Nexora Global')
+@section('title', 'About Us - A&C Electronics')
 
 @section('content')
 <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12 space-y-10">
@@ -22,7 +22,7 @@
         <div class="space-y-3">
             <h2 class="text-base font-black text-slate-900 uppercase tracking-wide">1. Direct OEM &amp; Factory Alliances</h2>
             <p>
-                Nexora Global was established to streamline cross-border consumer electronics procurement. By eliminating redundant middlemen and working directly with manufacturer production lines, we provide certified genuine Lenovo audio devices and AOC peripherals with guaranteed CE, FCC, and RoHS certifications.
+                A&C Electronics was established to streamline cross-border consumer electronics procurement. By eliminating redundant middlemen and working directly with manufacturer production lines, we provide certified genuine Lenovo audio devices and AOC peripherals with guaranteed CE, FCC, and RoHS certifications.
             </p>
         </div>
 
@@ -40,7 +40,7 @@
         <div class="space-y-3">
             <h2 class="text-base font-black text-slate-900 uppercase tracking-wide">3. Built on Enterprise Laravel 11 &amp; Lunar PHP</h2>
             <p>
-                Nexora Global is engineered with high-performance Laravel 11 and Lunar headless commerce architecture. Our platform guarantees real-time stock reservations, cryptographic HMAC SHA256 payment signature verification, integer-precision multi-currency calculation, and dynamic AJAX cart interactions.
+                A&C Electronics is engineered with high-performance Laravel 11 and Lunar headless commerce architecture. Our platform guarantees real-time stock reservations, cryptographic HMAC SHA256 payment signature verification, integer-precision multi-currency calculation, and dynamic AJAX cart interactions.
             </p>
         </div>
 

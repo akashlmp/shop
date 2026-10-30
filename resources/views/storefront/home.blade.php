@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Nexora Global - Connecting Markets, Delivering Excellence')
+@section('title', 'A&C Electronics - Connecting Markets, Delivering Excellence')
 
 @section('content')
 <div class="space-y-14 pb-20">
@@ -196,7 +196,7 @@
                         Save Up to 40% with Master Carton Volume Tiers
                     </h2>
                     <p class="text-xs sm:text-sm leading-relaxed text-slate-600">
-                        Whether sourcing 5 units for your store or full master cartons (50–100 pcs) for international resale, Nexora Global provides transparent pricing breaks, gross weight specs, and palletized commercial air cargo dispatch.
+                        Whether sourcing 5 units for your store or full master cartons (50–100 pcs) for international resale, A&amp;C Electronics provides transparent pricing breaks, gross weight specs, and palletized commercial air cargo dispatch.
                     </p>
                     <div class="flex flex-wrap gap-3 pt-2">
                         <a href="{{ route('experience.bulk') }}" class="rounded-xl bg-amber-500 hover:bg-amber-600 px-6 py-3 text-xs font-black text-slate-950 shadow-md shadow-amber-500/20 transition active:scale-95">

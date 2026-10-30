@@ -18,7 +18,9 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         LunarPanel::panel(function (\Filament\Panel $panel) {
-            return $panel->path('admin');
+            return $panel
+                ->path('admin')
+                ->brandName('A&C Electronics');
         })->register();
     }
 

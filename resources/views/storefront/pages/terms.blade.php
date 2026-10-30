@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Terms of Service & Trade - Nexora Global')
+@section('title', 'Terms of Service & Trade - A&C Electronics')
 
 @section('content')
 <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12 space-y-8">
@@ -15,7 +15,7 @@
         <section class="space-y-2">
             <h2 class="text-sm font-bold uppercase tracking-wider text-slate-900">1. Acceptance of Terms</h2>
             <p>
-                By accessing this platform, ordering hardware units, or engaging in B2B master carton procurement with Nexora Global, you agree to comply with and be bound by these Terms of Trade &amp; Service.
+                By accessing this platform, ordering hardware units, or engaging in B2B master carton procurement with A&C Electronics, you agree to comply with and be bound by these Terms of Trade &amp; Service.
             </p>
         </section>
 
@@ -43,7 +43,7 @@
         <section class="space-y-2">
             <h2 class="text-sm font-bold uppercase tracking-wider text-slate-900">5. Warranty &amp; Compliance</h2>
             <p>
-                All Lenovo and AOC electronic hardware units distributed by Nexora Global carry manufacturer warranties and adhere to international CE, FCC, and RoHS standards. Defective units reported within 14 days of receipt are replaced or credited via the original payment route.
+                All Lenovo and AOC electronic hardware units distributed by A&C Electronics carry manufacturer warranties and adhere to international CE, FCC, and RoHS standards. Defective units reported within 14 days of receipt are replaced or credited via the original payment route.
             </p>
         </section>
 

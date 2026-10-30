@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Trade Desk & Support - Nexora Global')
+@section('title', 'Trade Desk & Support - A&C Electronics')
 
 @section('content')
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 space-y-12">
@@ -9,7 +9,7 @@
         <span class="rounded-full bg-indigo-100 text-indigo-800 text-[10px] font-black uppercase px-3 py-1">
             Global Trade &amp; Client Support
         </span>
-        <h1 class="text-3xl font-black text-slate-900">Contact Nexora Global</h1>
+        <h1 class="text-3xl font-black text-slate-900">Contact A&C Electronics</h1>
         <p class="text-xs sm:text-sm text-slate-500">
             Have questions regarding master carton orders, air freight dispatch, container allocations, or product specifications? Contact our trade desk.
         </p>
@@ -82,7 +82,7 @@
 
                     <div class="border-t border-slate-100 pt-3">
                         <div class="font-bold text-slate-900">Direct Email Support</div>
-                        <div class="text-[11px] text-slate-500">trade@nexoraglobal.com &bull; support@nexoraglobal.com</div>
+                        <div class="text-[11px] text-slate-500">trade@acelectronics.com &bull; support@acelectronics.com</div>
                     </div>
                 </div>
             </div>

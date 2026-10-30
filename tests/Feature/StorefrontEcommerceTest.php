@@ -26,7 +26,7 @@ class StorefrontEcommerceTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSee('NEXORA');
+        $response->assertSee('ELECTRONICS');
         $response->assertSee('Delivering Excellence');
     }
 

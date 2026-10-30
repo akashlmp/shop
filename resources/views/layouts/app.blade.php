@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Nexora Global') - Connecting Markets, Delivering Excellence</title>
-    <meta name="description" content="@yield('meta_description', 'Nexora Global - Official B2B wholesale and retail distributor for Lenovo, AOC audio, ANC headphones, smartwatches, and computer peripherals. Connecting Markets, Delivering Excellence.')">
+    <title>@yield('title', 'A&C Electronics') - Connecting Markets, Delivering Excellence</title>
+    <meta name="description" content="@yield('meta_description', 'A&C Electronics - Official B2B wholesale and retail distributor for Lenovo, AOC audio, ANC headphones, smartwatches, and computer peripherals. Connecting Markets, Delivering Excellence.')">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,8 +62,8 @@
                             </svg>
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-xl font-black tracking-tight text-white group-hover:text-indigo-400 transition">
-                                NEXORA<span class="text-cyan-400">GLOBAL</span>
+                            <span class="text-xl font-black tracking-tight text-white group-hover:text-cyan-400 transition">
+                                A&amp;C <span class="text-cyan-400">ELECTRONICS</span>
                             </span>
                             <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400">
                                 Connecting Markets, Delivering Excellence
@@ -297,7 +297,7 @@
                         <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-white font-black text-sm">
                             N
                         </div>
-                        <span class="text-lg font-black text-white">NEXORA<span class="text-cyan-400">GLOBAL</span></span>
+                        <span class="text-lg font-black text-white">A&amp;C <span class="text-cyan-400">ELECTRONICS</span></span>
                     </div>
                     <p class="mt-3 text-xs leading-relaxed text-slate-400 max-w-sm">
                         Premier international electronics trade platform. Empowering retail buyers and commercial wholesale distributors with certified hardware, tiered carton pricing, and seamless global fulfillment.
@@ -348,7 +348,7 @@
             </div>
 
             <div class="mt-12 border-t border-slate-800/80 pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500">
-                <p>&copy; {{ date('Y') }} Nexora Global Ltd. Built with Laravel 11 & Lunar PHP.</p>
+                <p>&copy; {{ date('Y') }} A&amp;C Electronics Ltd. Built with Laravel 11 &amp; Lunar PHP.</p>
                 <div class="mt-4 md:mt-0 flex items-center space-x-3">
                     <span class="rounded bg-slate-900 border border-slate-800 px-2 py-1 text-[11px] font-semibold text-slate-400">Cash on Delivery</span>
                     <span class="rounded bg-slate-900 border border-slate-800 px-2 py-1 text-[11px] font-semibold text-slate-400">Razorpay Online</span>
