@@ -28,6 +28,12 @@ class StoreDataSeeder extends Seeder
 {
     public function run(): void
     {
+        // 0. Ensure Countries and States are imported
+        if (Country::count() === 0) {
+            $this->command?->info('Importing Lunar address data (countries & states)...');
+            \Illuminate\Support\Facades\Artisan::call('lunar:import:address-data');
+        }
+
         // 1. Channel
         $channel = Channel::firstOrCreate(
             ['handle' => 'webstore'],
