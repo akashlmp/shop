@@ -1,42 +1,43 @@
 @extends('layouts.app')
 
-@section('title', 'Privacy Policy - A&C Electronics')
+@section('title', 'Privacy & Data Protection - A&C Electronics')
+@section('meta_description', 'Privacy and data protection policy for A&C Electronics Ltd. How trade and retail data is securely processed.')
 
 @section('content')
 <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12 space-y-8">
 
     <div class="border-b border-slate-200 pb-4">
-        <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">Privacy Policy</h1>
-        <p class="text-xs text-slate-500 mt-1">Last updated: {{ date('F Y') }}. How A&C Electronics protects and processes client data.</p>
+        <h1 class="font-display text-2xl sm:text-4xl font-extrabold text-slate-950">Privacy &amp; Data Protection Policy</h1>
+        <p class="text-xs text-slate-500 mt-1">Last updated: {{ date('F Y') }}. How A&amp;C Electronics Ltd protects trade and consumer information.</p>
     </div>
 
-    <div class="rounded-3xl border border-slate-200 bg-white p-6 sm:p-10 shadow-sm space-y-6 text-xs sm:text-sm text-slate-600 leading-relaxed">
+    <div class="rounded-3xl border border-slate-200 bg-white p-6 sm:p-10 shadow-2xs space-y-6 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
         
         <section class="space-y-2">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-900">1. Information We Collect</h2>
+            <h2 class="font-display text-base font-bold text-slate-900">1. Information We Collect</h2>
             <p>
-                To process consignments, fulfill electronic hardware orders, generate export invoices, and manage client accounts, we collect essential details including your name, company name, destination shipping address, phone number, email address, and order transaction history.
+                When you place a retail hardware order, register a B2B wholesale trade account, or submit master carton delivery instructions, we collect necessary commercial details such as your company or personal name, delivery address, corporate registration / VAT details (where applicable), contact telephone, and email.
             </p>
         </section>
 
         <section class="space-y-2">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-900">2. Payment &amp; Escrow Security</h2>
+            <h2 class="font-display text-base font-bold text-slate-900">2. Commercial Payment &amp; Escrow Security</h2>
             <p>
-                A&C Electronics never stores unencrypted payment credentials on our servers. All digital payments are processed through PCI-DSS Tier 1 certified gateways (including Razorpay) using server-side HMAC SHA256 cryptographic verification and SSL encryption.
+                All digital transactions are encrypted via industry-standard, PCI-DSS Level 1 compliant payment gateways (including Visa, Mastercard, AMEX, Razorpay, and bank wire transfers). We never store raw debit/credit card credentials on our servers.
             </p>
         </section>
 
         <section class="space-y-2">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-900">3. Cookies and Session Management</h2>
+            <h2 class="font-display text-base font-bold text-slate-900">3. Trade Inquiries &amp; Quotations</h2>
             <p>
-                We use secure, HTTP-only session cookies to manage shopping carts, active logins, and temporary checkout state. We do not sell client data or procurement history to third parties.
+                Custom master carton wholesale quotations, pricing tiers, and OEM volume agreements remain strictly confidential between A&amp;C Electronics and the registered commercial account holder.
             </p>
         </section>
 
         <section class="space-y-2">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-900">4. Your Rights</h2>
+            <h2 class="font-display text-base font-bold text-slate-900">4. Contacting Our Data Controller</h2>
             <p>
-                You may review, update, or delete your saved shipping addresses and account details at any time via your Client Account Portal or by contacting trade support.
+                For GDPR compliance inquiries, data subject access requests, or account deletion, please contact our data officer directly at <strong class="text-slate-900">trade@ac-electronics.co.uk</strong>.
             </p>
         </section>
 

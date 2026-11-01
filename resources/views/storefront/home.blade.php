@@ -1,92 +1,100 @@
 @extends('layouts.app')
 
-@section('title', 'A&C Electronics - Connecting Markets, Delivering Excellence')
+@section('title', 'A&C Electronics - Connecting Global Brands to UK Markets')
+@section('meta_description', 'A&C Electronics is your premier gateway to global electronic brands in the UK. Direct OEM sourcing for Lenovo & AOC audio, smart wearables, and computer peripherals.')
 
 @section('content')
-<div class="space-y-14 pb-20">
+<div class="space-y-16 sm:space-y-24 pb-16">
 
-    <!-- 1. Hero Section -->
-    <section class="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white py-14 md:py-20 border-b border-slate-800">
-        <div class="absolute inset-0 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:24px_24px] opacity-15"></div>
+    <!-- 1. High-Tech Enterprise Hero Section -->
+    <section class="relative overflow-hidden bg-slate-950 text-white py-16 sm:py-24 lg:py-28 border-b border-slate-800">
+        <!-- Ambient Grid Background & Subtle Radial Glow -->
+        <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:28px_28px]"></div>
+        <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-blue-600/20 blur-3xl"></div>
+        <div class="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-cyan-600/20 blur-3xl"></div>
+
         <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
-                <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 rounded-full bg-indigo-500/15 border border-indigo-500/30 px-4 py-1 text-xs font-bold text-indigo-300">
-                        <span class="flex h-2 w-2 rounded-full bg-cyan-400 animate-ping"></span>
-                        Authorized Global Electronics Trading &bull; B2B &amp; Retail
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 rounded-full bg-blue-950/80 border border-blue-500/30 px-4 py-1 text-xs font-semibold tracking-wide text-blue-400">
+                        <span class="inline-block h-2 w-2 rounded-full bg-blue-400 animate-pulse"></span>
+                        <span>Powering Global Trade, Building Trust</span>
+                        <span class="text-slate-600">&bull;</span>
+                        <span class="text-slate-300">UK Distribution</span>
                     </div>
 
-                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white">
-                        Global Electronics Trading. <br class="hidden sm:inline">
-                        <span class="bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-300 bg-clip-text text-transparent">
-                            Delivering Excellence.
+                    <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+                        Connecting Global Brands <br class="hidden sm:inline">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-200">
+                            to UK Markets
                         </span>
                     </h1>
 
-                    <p class="text-sm sm:text-base text-slate-300 max-w-xl leading-relaxed">
-                        Direct-from-factory distribution of Lenovo and AOC acoustic hardware, Active Noise Cancelling headphones, AMOLED smartwatches, and computer peripherals. Available for single unit retail or master carton export containers.
+                    <p class="text-sm sm:text-base text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed font-light">
+                        <strong>A&amp;C Electronics</strong> is your gateway to global markets. We provide direct OEM factory sourcing for Lenovo acoustic systems, AOC gaming audio, smart wearables, and computer peripherals with master carton wholesale pricing and fast UK dispatch.
                     </p>
 
-                    <!-- Trade Highlights / Quick Stats -->
-                    <div class="grid grid-cols-3 gap-3 max-w-lg pt-1">
-                        <div class="rounded-xl border border-slate-800 bg-slate-900/80 p-3 text-center">
-                            <span class="block text-xl font-black text-cyan-400">30+</span>
-                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Models in Stock</span>
+                    <!-- Trust Stats -->
+                    <div class="grid grid-cols-3 gap-3 max-w-md mx-auto lg:mx-0 pt-2">
+                        <div class="rounded-2xl border border-slate-800 bg-slate-900/80 p-3.5 text-center">
+                            <span class="block font-display text-xl sm:text-2xl font-black text-blue-400">100%</span>
+                            <span class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Direct OEM</span>
                         </div>
-                        <div class="rounded-xl border border-slate-800 bg-slate-900/80 p-3 text-center">
-                            <span class="block text-xl font-black text-indigo-400">Up to 40%</span>
-                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Carton Savings</span>
+                        <div class="rounded-2xl border border-slate-800 bg-slate-900/80 p-3.5 text-center">
+                            <span class="block font-display text-xl sm:text-2xl font-black text-emerald-400">Up to 40%</span>
+                            <span class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Carton Savings</span>
                         </div>
-                        <div class="rounded-xl border border-slate-800 bg-slate-900/80 p-3 text-center">
-                            <span class="block text-xl font-black text-emerald-400">100%</span>
-                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">CE &amp; RoHS Tested</span>
+                        <div class="rounded-2xl border border-slate-800 bg-slate-900/80 p-3.5 text-center">
+                            <span class="block font-display text-xl sm:text-2xl font-black text-white">24/48h</span>
+                            <span class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">UK Tracked</span>
                         </div>
                     </div>
 
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-wrap gap-3 pt-3">
-                        <a href="{{ route('products.index') }}" class="rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 px-6 py-3.5 text-xs font-black text-white shadow-xl shadow-indigo-600/30 transition active:scale-95 flex items-center gap-2">
-                            <span>Browse All Electronics</span>
-                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    <!-- Dual Call to Action -->
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-3.5 pt-4">
+                        <a href="{{ route('products.index') }}"
+                           class="rounded-full bg-blue-600 px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-blue-500 shadow-xl transition active:scale-95">
+                            Browse Electronics &rarr;
                         </a>
-                        <a href="{{ route('experience.bulk') }}" class="rounded-xl bg-amber-400 hover:bg-amber-300 px-6 py-3.5 text-xs font-black text-slate-950 shadow-xl shadow-amber-400/20 transition active:scale-95 flex items-center gap-2">
-                            <span>📦 Bulk Wholesale Portal</span>
-                        </a>
-                        <a href="{{ route('experience.retail') }}" class="rounded-xl bg-slate-800/90 hover:bg-slate-800 border border-slate-700 px-6 py-3.5 text-xs font-bold text-slate-200 transition">
-                            Retail Catalog
+                        <a href="{{ route('experience.bulk') }}"
+                           class="rounded-full border border-slate-700 bg-slate-900/80 px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-200 hover:bg-slate-800 hover:text-white transition active:scale-95 flex items-center gap-2">
+                            <span>B2B Master Carton Portal</span>
+                            <span class="text-[10px] bg-blue-500/20 text-blue-400 border border-blue-500/30 px-1.5 py-0.5 rounded">Wholesale</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Right Hero Feature Cards -->
-                <div class="lg:col-span-5 grid grid-cols-2 gap-3.5">
-                    <div class="rounded-2xl bg-slate-900/80 backdrop-blur-md p-4 border border-slate-800 space-y-2">
-                        <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-500/20 text-indigo-400 font-bold">🎧</div>
-                        <h4 class="text-xs font-extrabold text-white">Lenovo EA Series</h4>
-                        <p class="text-[11px] text-slate-400">Bluetooth 5.3 &amp; 5.4 Jerry cores, composite diaphragms.</p>
-                        <span class="inline-block text-xs font-black text-cyan-400">Retail from €5.99</span>
+                <!-- Right Hero Electronics Showcase Cards -->
+                <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <div class="relative overflow-hidden rounded-2xl bg-slate-900 aspect-[4/5] shadow-2xl border border-slate-800 group">
+                            <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=700&q=80"
+                                 alt="Lenovo Wireless TWS Earbuds"
+                                 class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex flex-col justify-end p-4">
+                                <span class="text-[9px] uppercase tracking-wider text-blue-400 font-bold">Lenovo EA Series</span>
+                                <span class="text-xs font-display font-bold text-white">TWS Wireless Earbuds</span>
+                            </div>
+                        </div>
+                        <div class="rounded-2xl bg-slate-900/90 p-4 border border-slate-800 text-center">
+                            <p class="text-[11px] text-blue-400 font-semibold">⚡ Bluetooth 5.4 &bull; Low Latency</p>
+                        </div>
                     </div>
 
-                    <div class="rounded-2xl bg-slate-900/80 backdrop-blur-md p-4 border border-slate-800 space-y-2">
-                        <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-500/20 text-cyan-400 font-bold">🔇</div>
-                        <h4 class="text-xs font-extrabold text-white">AOC Hybrid ANC</h4>
-                        <p class="text-[11px] text-slate-400">-40dB Active Noise Cancellation &amp; Realtek DSP.</p>
-                        <span class="inline-block text-xs font-black text-cyan-400">Retail from €14.99</span>
-                    </div>
-
-                    <div class="rounded-2xl bg-slate-900/80 backdrop-blur-md p-4 border border-slate-800 space-y-2">
-                        <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500/20 text-amber-400 font-bold">⌚</div>
-                        <h4 class="text-xs font-extrabold text-white">Smartwatches</h4>
-                        <p class="text-[11px] text-slate-400">1.96" Borderless screens, Bluetooth calls, SpO2 &amp; IP68.</p>
-                        <span class="inline-block text-xs font-black text-amber-400">Retail from €18.99</span>
-                    </div>
-
-                    <div class="rounded-2xl bg-slate-900/80 backdrop-blur-md p-4 border border-slate-800 space-y-2">
-                        <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400 font-bold">⚖️</div>
-                        <h4 class="text-xs font-extrabold text-white">Diagnostic Scales</h4>
-                        <p class="text-[11px] text-slate-400">Full-surface ITO glass, Fitdays app sync &amp; VA color LCD.</p>
-                        <span class="inline-block text-xs font-black text-emerald-400">Retail from €9.99</span>
+                    <div class="space-y-4 pt-6">
+                        <div class="rounded-2xl bg-slate-900/90 p-4 border border-slate-800 text-center">
+                            <p class="text-[11px] text-emerald-400 font-semibold">🛡️ CE &amp; RoHS Certified</p>
+                        </div>
+                        <div class="relative overflow-hidden rounded-2xl bg-slate-900 aspect-[4/5] shadow-2xl border border-slate-800 group">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80"
+                                 alt="AOC Hybrid ANC Headset"
+                                 class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex flex-col justify-end p-4">
+                                <span class="text-[9px] uppercase tracking-wider text-cyan-400 font-bold">AOC Acoustic</span>
+                                <span class="text-xs font-display font-bold text-white">Hybrid -40dB ANC</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -94,153 +102,262 @@
         </div>
     </section>
 
-    <!-- 2. Categories Section -->
+    <!-- 2. Four Trade Pillars Strip -->
     <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between mb-6">
-            <div>
-                <h2 class="text-xl sm:text-2xl font-black tracking-tight text-slate-900">Electronics Categories</h2>
-                <p class="text-xs text-slate-500 mt-1">Explore our 7 certified hardware and consumer electronic departments</p>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div class="rounded-2xl border border-slate-200/90 bg-white p-5 shadow-2xs flex flex-col items-center text-center tech-card-hover">
+                <span class="text-2xl mb-2">🌐</span>
+                <h3 class="font-display text-sm font-bold text-slate-900">Direct OEM Sourcing</h3>
+                <p class="mt-1 text-xs text-slate-500">Certified Lenovo &amp; AOC hardware direct from licensed factories.</p>
             </div>
-            <a href="{{ route('products.index') }}" class="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
-                View All Categories &rarr;
-            </a>
-        </div>
-
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 sm:gap-4">
-            @foreach ($collections as $collection)
-                @php
-                    $catUrl = $collection->urls->first()?->slug ?? $collection->id;
-                    $catName = $collection->translateAttribute('name');
-                @endphp
-                <a href="{{ route('products.category', $catUrl) }}" class="group flex flex-col items-center text-center p-3.5 rounded-2xl border border-slate-200/80 bg-white hover:border-indigo-500 hover:shadow-lg transition duration-200">
-                    <div class="h-16 w-16 rounded-xl bg-slate-100 flex items-center justify-center overflow-hidden mb-2.5 group-hover:scale-105 transition">
-                        @if ($collection->slug === 'tws-earbuds')
-                            <span class="text-2xl">🎧</span>
-                        @elseif ($collection->slug === 'anc-audio')
-                            <span class="text-2xl">🔇</span>
-                        @elseif ($collection->slug === 'open-ear-sports')
-                            <span class="text-2xl">🏃</span>
-                        @elseif ($collection->slug === 'gaming-over-ear')
-                            <span class="text-2xl">🎮</span>
-                        @elseif ($collection->slug === 'smartwatches-wearables')
-                            <span class="text-2xl">⌚</span>
-                        @elseif ($collection->slug === 'computer-mice')
-                            <span class="text-2xl">🖱️</span>
-                        @elseif ($collection->slug === 'smart-scales')
-                            <span class="text-2xl">⚖️</span>
-                        @else
-                            <span class="text-2xl">⚡</span>
-                        @endif
-                    </div>
-                    <h3 class="text-xs font-bold text-slate-800 group-hover:text-indigo-600 transition leading-tight line-clamp-2">
-                        {{ $catName }}
-                    </h3>
-                </a>
-            @endforeach
+            <div class="rounded-2xl border border-slate-200/90 bg-white p-5 shadow-2xs flex flex-col items-center text-center tech-card-hover">
+                <span class="text-2xl mb-2">📦</span>
+                <h3 class="font-display text-sm font-bold text-slate-900">Master Carton Wholesale</h3>
+                <p class="mt-1 text-xs text-slate-500">Tiered volume discounts (5-50+ units) for UK trade resellers.</p>
+            </div>
+            <div class="rounded-2xl border border-slate-200/90 bg-white p-5 shadow-2xs flex flex-col items-center text-center tech-card-hover">
+                <span class="text-2xl mb-2">✈️</span>
+                <h3 class="font-display text-sm font-bold text-slate-900">Tracked UK &amp; Global Logistics</h3>
+                <p class="mt-1 text-xs text-slate-500">Express air courier and pallet consignments with live tracking.</p>
+            </div>
+            <div class="rounded-2xl border border-slate-200/90 bg-white p-5 shadow-2xs flex flex-col items-center text-center tech-card-hover">
+                <span class="text-2xl mb-2">🛡️</span>
+                <h3 class="font-display text-sm font-bold text-slate-900">CE &amp; RoHS Certified</h3>
+                <p class="mt-1 text-xs text-slate-500">Full UKCA compliance, 1-year warranty, and tested safety standards.</p>
+            </div>
         </div>
     </section>
 
-    <!-- 3. Featured Electronic Products Grid -->
+    <!-- 3. Curated Electronics Collections (Visual Tiles) -->
     <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between mb-6">
-            <div>
-                <div class="flex items-center gap-2">
-                    <h2 class="text-xl sm:text-2xl font-black tracking-tight text-slate-900">Featured Releases</h2>
-                    <span class="rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black px-2 py-0.5 uppercase tracking-wide">Lenovo &amp; AOC</span>
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-blue-600">Hardware Categories</span>
+            <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">Explore Electronic Hardware</h2>
+            <p class="mt-2 text-xs sm:text-sm text-slate-500">Certified consumer tech audio, smart health wearables, and computer peripherals.</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            
+            <!-- Category 1: TWS Earbuds -->
+            <a href="{{ route('products.index', ['category' => 'tws-earbuds']) }}" class="group relative overflow-hidden rounded-2xl bg-slate-900 aspect-[4/5] shadow-xs tech-card-hover">
+                <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=600&q=80"
+                     alt="TWS Earbuds & True Wireless"
+                     class="h-full w-full object-cover group-hover:scale-105 transition duration-500 opacity-90">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent flex flex-col justify-end p-4 sm:p-5">
+                    <span class="text-[10px] uppercase tracking-widest text-blue-400 font-bold">Bluetooth 5.4</span>
+                    <h3 class="font-display text-base sm:text-lg font-bold text-white group-hover:text-blue-300 transition">TWS Earbuds</h3>
+                    <span class="text-[11px] text-slate-300 mt-0.5">Explore Lenovo EA &rarr;</span>
                 </div>
-                <p class="text-xs text-slate-500 mt-1">High-demand acoustic devices and peripherals with dynamic cart adding</p>
+            </a>
+
+            <!-- Category 2: ANC Audio -->
+            <a href="{{ route('products.index', ['category' => 'anc-audio']) }}" class="group relative overflow-hidden rounded-2xl bg-slate-900 aspect-[4/5] shadow-xs tech-card-hover">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
+                     alt="Active Noise Cancelling (ANC)"
+                     class="h-full w-full object-cover group-hover:scale-105 transition duration-500 opacity-90">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent flex flex-col justify-end p-4 sm:p-5">
+                    <span class="text-[10px] uppercase tracking-widest text-blue-400 font-bold">-40dB Hybrid ANC</span>
+                    <h3 class="font-display text-base sm:text-lg font-bold text-white group-hover:text-blue-300 transition">ANC Audio</h3>
+                    <span class="text-[11px] text-slate-300 mt-0.5">AOC Gaming &amp; Travel &rarr;</span>
+                </div>
+            </a>
+
+            <!-- Category 3: Smartwatches -->
+            <a href="{{ route('products.index', ['category' => 'smartwatches-wearables']) }}" class="group relative overflow-hidden rounded-2xl bg-slate-900 aspect-[4/5] shadow-xs tech-card-hover">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
+                     alt="Smartwatches & Fitness Wearables"
+                     class="h-full w-full object-cover group-hover:scale-105 transition duration-500 opacity-90">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent flex flex-col justify-end p-4 sm:p-5">
+                    <span class="text-[10px] uppercase tracking-widest text-blue-400 font-bold">AMOLED &bull; IP68</span>
+                    <h3 class="font-display text-base sm:text-lg font-bold text-white group-hover:text-blue-300 transition">Smartwatches</h3>
+                    <span class="text-[11px] text-slate-300 mt-0.5">Biometric Fitness &rarr;</span>
+                </div>
+            </a>
+
+            <!-- Category 4: Computer Mice & Peripherals -->
+            <a href="{{ route('products.index', ['category' => 'computer-mice']) }}" class="group relative overflow-hidden rounded-2xl bg-slate-900 aspect-[4/5] shadow-xs tech-card-hover">
+                <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=600&q=80"
+                     alt="Computer Mice & Peripherals"
+                     class="h-full w-full object-cover group-hover:scale-105 transition duration-500 opacity-90">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent flex flex-col justify-end p-4 sm:p-5">
+                    <span class="text-[10px] uppercase tracking-widest text-blue-400 font-bold">Tri-Mode Wireless</span>
+                    <h3 class="font-display text-base sm:text-lg font-bold text-white group-hover:text-blue-300 transition">Peripherals</h3>
+                    <span class="text-[11px] text-slate-300 mt-0.5">Ergonomic Mice &rarr;</span>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- 4. Bestsellers Hardware Showcase (2-Column Mobile, 4-Column Desktop) -->
+    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between mb-8 pb-4 border-b border-slate-200">
+            <div>
+                <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-blue-600">Featured Releases</span>
+                <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Bestselling Hardware</h2>
             </div>
-            <a href="{{ route('products.index') }}" class="text-xs font-bold text-indigo-600 hover:text-indigo-800">
-                View All Products &rarr;
+            <a href="{{ route('products.index') }}" class="text-xs font-bold uppercase tracking-wider text-blue-600 hover:text-blue-800 transition flex items-center gap-1">
+                <span>View Full Catalog</span>
+                <span>&rarr;</span>
             </a>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-            @foreach ($featuredProducts as $product)
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            @forelse ($featuredProducts as $product)
                 <x-product-card :product="$product" />
-            @endforeach
-        </div>
-    </section>
-
-    <!-- 4. High-Performance Audio Spotlight (TWS & Gaming) -->
-    <section class="bg-slate-900 py-12 text-white">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
-                <div>
-                    <span class="text-xs font-extrabold uppercase tracking-widest text-cyan-400">Wireless Acoustic Engineering</span>
-                    <h2 class="text-2xl sm:text-3xl font-black text-white mt-1">TWS Earbuds &amp; Low-Latency Gaming</h2>
-                    <p class="text-xs text-slate-400 mt-1">Equipped with Jerry &amp; Bluetrum low-latency chips and composite dynamic horns</p>
+            @empty
+                <div class="col-span-4 text-center py-12 bg-white rounded-2xl border border-slate-200">
+                    <p class="text-slate-500 text-sm">No electronics listed at the moment.</p>
                 </div>
-                <a href="{{ route('products.category', 'tws-earbuds') }}" class="rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-2 text-xs font-bold text-slate-200 hover:bg-slate-700 transition">
-                    Explore All Audio &rarr;
-                </a>
-            </div>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 text-slate-900">
-                @foreach ($twsProducts as $product)
-                    <x-product-card :product="$product" />
-                @endforeach
-            </div>
+            @endforelse
         </div>
     </section>
 
-    <!-- 5. B2B Wholesale / Master Carton Section -->
+    <!-- 5. Retail vs Wholesale Split Feature Section -->
     <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="rounded-3xl border border-amber-200 bg-gradient-to-br from-amber-50 via-white to-orange-50 p-6 sm:p-10 shadow-sm">
-            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-                <div class="max-w-2xl space-y-4">
-                    <div class="inline-flex items-center gap-1.5 rounded-full bg-amber-400/20 border border-amber-400/30 px-3 py-1 text-xs font-extrabold text-amber-800">
-                        📦 Commercial Exporters &amp; B2B Distributors
+        <div class="overflow-hidden rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-xl">
+            <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+                
+                <!-- Left Lifestyle Graphic -->
+                <div class="lg:col-span-6 relative aspect-video lg:aspect-auto lg:h-full min-h-[340px]">
+                    <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=900&q=80"
+                         alt="A&C Electronics International Logistics"
+                         class="h-full w-full object-cover">
+                    <div class="absolute inset-0 bg-slate-950/40"></div>
+                    <div class="absolute bottom-4 left-4 rounded-xl bg-slate-900/90 backdrop-blur-xs px-3.5 py-1.5 text-xs font-semibold text-white border border-slate-700 shadow">
+                        📦 Master Carton Consignments &bull; London Logistics Hub
                     </div>
-                    <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-slate-900">
-                        Save Up to 40% with Master Carton Volume Tiers
+                </div>
+
+                <!-- Right Copy & Value Propositions -->
+                <div class="lg:col-span-6 p-8 sm:p-12 space-y-6">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-blue-400">Global Trade. Trusted Partnerships.</span>
+                    <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+                        Connecting Markets, <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+                            Delivering Excellence
+                        </span>
                     </h2>
-                    <p class="text-xs sm:text-sm leading-relaxed text-slate-600">
-                        Whether sourcing 5 units for your store or full master cartons (50–100 pcs) for international resale, A&amp;C Electronics provides transparent pricing breaks, gross weight specs, and palletized commercial air cargo dispatch.
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+                        Whether purchasing single retail hardware units or reserving full master carton pallet consignments, <strong>A&amp;C Electronics</strong> ensures verified factory quality, rapid customs clearance, and predictable trade fulfillment.
                     </p>
-                    <div class="flex flex-wrap gap-3 pt-2">
-                        <a href="{{ route('experience.bulk') }}" class="rounded-xl bg-amber-500 hover:bg-amber-600 px-6 py-3 text-xs font-black text-slate-950 shadow-md shadow-amber-500/20 transition active:scale-95">
-                            Enter Bulk Wholesale Portal &rarr;
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="rounded-xl bg-slate-800/80 p-4 border border-slate-700 space-y-1.5">
+                            <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider">Retail Consumers</h4>
+                            <p class="text-[11px] text-slate-300">Individual unit orders with next-day UK dispatch, complete accessories, and 12-month UK replacement warranty.</p>
+                        </div>
+                        <div class="rounded-xl bg-slate-800/80 p-4 border border-slate-700 space-y-1.5">
+                            <h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider">B2B Wholesalers</h4>
+                            <p class="text-[11px] text-slate-300">Tiered carton rates (5-50+ units), container volume logistics, commercial VAT invoices, and dedicated trade managers.</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <a href="{{ route('experience.bulk') }}" class="inline-block rounded-full bg-blue-600 px-7 py-3 text-xs font-bold uppercase tracking-wider text-white hover:bg-blue-500 shadow-md transition">
+                            Explore Master Carton Tiers &rarr;
                         </a>
-                        <a href="{{ route('page.contact') }}" class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 transition">
-                            Request Container Quote
+                        <a href="{{ route('page.contact') }}" class="inline-block rounded-full border border-slate-700 bg-slate-800 px-6 py-3 text-xs font-bold uppercase tracking-wider text-slate-200 hover:bg-slate-700 transition">
+                            Inquire with Trade Desk
                         </a>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-3 sm:gap-4 lg:w-96">
-                    <div class="rounded-2xl border border-amber-200/80 bg-white p-4 shadow-sm">
-                        <span class="text-xs font-bold text-slate-400">Minimum Order</span>
-                        <h4 class="text-xl font-black text-slate-900 mt-1">5 Units</h4>
-                        <p class="text-[11px] text-slate-500 mt-1">Low barrier for testing new models</p>
-                    </div>
-                    <div class="rounded-2xl border border-amber-200/80 bg-white p-4 shadow-sm">
-                        <span class="text-xs font-bold text-slate-400">Master Carton</span>
-                        <h4 class="text-xl font-black text-amber-600 mt-1">50-100 Pcs</h4>
-                        <p class="text-[11px] text-slate-500 mt-1">Factory carton export packaging</p>
-                    </div>
-                    <div class="rounded-2xl border border-amber-200/80 bg-white p-4 shadow-sm">
-                        <span class="text-xs font-bold text-slate-400">International Cargo</span>
-                        <h4 class="text-xl font-black text-indigo-600 mt-1">Air &amp; Pallet</h4>
-                        <p class="text-[11px] text-slate-500 mt-1">Free freight over €250+</p>
-                    </div>
-                    <div class="rounded-2xl border border-amber-200/80 bg-white p-4 shadow-sm">
-                        <span class="text-xs font-bold text-slate-400">Compliance</span>
-                        <h4 class="text-xl font-black text-emerald-600 mt-1">CE / RoHS</h4>
-                        <p class="text-[11px] text-slate-500 mt-1">Full documentation provided</p>
-                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Secondary Hardware Collection (ANC & Sports Audio) -->
+    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between mb-8 pb-4 border-b border-slate-200">
+            <div>
+                <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-blue-600">Acoustic Engineering</span>
+                <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">High-Fidelity Audio &amp; Headsets</h2>
+            </div>
+            <a href="{{ route('products.index', ['category' => 'anc-audio']) }}" class="text-xs font-bold uppercase tracking-wider text-blue-600 hover:text-blue-800 transition">
+                Browse Audio &rarr;
+            </a>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            @php
+                $secondaryList = $twsProducts->isNotEmpty() ? $twsProducts : $featuredProducts->slice(0, 4);
+            @endphp
+            @forelse ($secondaryList as $product)
+                <x-product-card :product="$product" />
+            @empty
+                <div class="col-span-4 text-center py-8 text-xs text-slate-400">
+                    No hardware listed in this collection.
                 </div>
+            @endforelse
+        </div>
+    </section>
+
+    <!-- 7. Verified Partner & Buyer Reviews -->
+    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl bg-white border border-slate-200 p-8 sm:p-12 shadow-xs">
+            <div class="text-center max-w-xl mx-auto mb-10">
+                <div class="flex justify-center items-center gap-1 text-amber-500 text-base mb-2">
+                    ★★★★★
+                </div>
+                <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">Trusted by UK Trade Partners</h2>
+                <p class="mt-2 text-xs text-slate-500">Read what retail store managers, wholesale resellers, and tech buyers say about A&amp;C Electronics.</p>
             </div>
 
-            <!-- Bulk Products Preview -->
-            <div class="mt-8 pt-8 border-t border-amber-200/70">
-                <h3 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider mb-4">Popular Wholesale Models</h3>
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
-                    @foreach ($bulkBuyProducts->take(3) as $p)
-                        <x-product-card :product="$p" />
-                    @endforeach
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Review 1 -->
+                <div class="rounded-2xl bg-slate-50 p-6 border border-slate-200/80 space-y-3">
+                    <div class="flex text-amber-500 text-xs">★★★★★</div>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        "We ordered 50 master cartons of the Lenovo EA Series earbuds for our high street electronics outlets in Birmingham. The packaging was pristine, CE certificates were included in the bill of lading, and margin savings were substantial."
+                    </p>
+                    <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-xs">
+                        <span class="font-bold text-slate-900">Marcus Sterling</span>
+                        <span class="text-[10px] text-blue-700 font-bold bg-blue-50 px-2 py-0.5 rounded-full">Retail Store Director</span>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="rounded-2xl bg-slate-50 p-6 border border-slate-200/80 space-y-3">
+                    <div class="flex text-amber-500 text-xs">★★★★★</div>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        "The AOC Hybrid ANC headphones are phenomenal sellers for gaming and hybrid work setups. A&amp;C Electronics provided instant tracking and delivered our pallet within 48 hours. A truly reliable UK trade partner."
+                    </p>
+                    <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-xs">
+                        <span class="font-bold text-slate-900">Julian Price</span>
+                        <span class="text-[10px] text-blue-700 font-bold bg-blue-50 px-2 py-0.5 rounded-full">Commercial Procurement</span>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="rounded-2xl bg-slate-50 p-6 border border-slate-200/80 space-y-3">
+                    <div class="flex text-amber-500 text-xs">★★★★★</div>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        "Ordered a single unit Lenovo wireless system to test quality before placing a bulk corporate gift order. The audio clarity and battery life exceeded expectations. Great customer service at the trade desk."
+                    </p>
+                    <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-xs">
+                        <span class="font-bold text-slate-900">Emma Thornton</span>
+                        <span class="text-[10px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full">Verified Tech Buyer</span>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- 8. Trade Desk Newsletter & Corporate Inquiries -->
+    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl bg-slate-950 text-white p-8 sm:p-14 border border-slate-800 text-center max-w-4xl mx-auto space-y-5 shadow-2xl">
+            <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-blue-400">Trade Intelligence &amp; Inquiries</span>
+            <h2 class="font-display text-2xl sm:text-4xl font-extrabold">Your Gateway to Global Markets</h2>
+            <p class="text-xs sm:text-sm text-slate-400 max-w-lg mx-auto leading-relaxed font-light">
+                Subscribe for factory inventory alerts, new Lenovo &amp; AOC arrivals, and master carton allocation schedules. Use code <strong class="text-blue-400 font-mono">B2B50</strong> for wholesale shipping credits.
+            </p>
+            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Trade desk subscription confirmed! Use trade coupon code B2B50 at checkout.');" class="max-w-md mx-auto flex flex-col sm:flex-row gap-2 pt-2">
+                <input type="email" required placeholder="Enter corporate email address" class="flex-1 rounded-full border border-slate-700 bg-slate-900 px-5 py-3 text-xs text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none">
+                <button type="submit" class="rounded-full bg-blue-600 hover:bg-blue-500 px-7 py-3 text-xs font-bold uppercase tracking-wider text-white transition">
+                    Subscribe
+                </button>
+            </form>
         </div>
     </section>
 
