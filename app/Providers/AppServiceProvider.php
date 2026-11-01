@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
         LunarPanel::panel(function (\Filament\Panel $panel) {
             return $panel
                 ->path('admin')
+                ->brandLogo(false)
                 ->brandName('A&C Electronics');
         })->register();
 

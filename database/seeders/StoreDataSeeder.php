@@ -39,8 +39,8 @@ class StoreDataSeeder extends Seeder
             \Lunar\Admin\Models\Staff::create([
                 'first_name' => 'Admin',
                 'last_name' => 'User',
-                'email' => 'admin@acelectronics.com',
-                'password' => \Illuminate\Support\Facades\Hash::make('AdminPassword123!'),
+                'email' => 'admin@gmail.com',
+                'password' => \Illuminate\Support\Facades\Hash::make('password!'),
                 'admin' => true,
             ]);
         }

@@ -24,12 +24,12 @@
 
     <!-- Category Pill Filter Tabs -->
     <div class="flex items-center gap-2 overflow-x-auto pb-2 text-xs font-semibold no-scrollbar">
-        <a href="{{ route('experience.retail') }}" class="rounded-full px-4 py-2 transition {{ !request('category') ? 'bg-blue-600 text-white shadow' : 'bg-white border border-slate-200 text-slate-700 hover:border-slate-400' }}">
+        <a href="{{ route('experience.retail') }}" class="rounded-full px-4 py-2 whitespace-nowrap shrink-0 transition {{ !request('category') ? 'bg-blue-600 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 hover:border-blue-400' }}">
             All Hardware
         </a>
         @foreach ($collections as $col)
             @php $slug = $col->urls->first()?->slug; @endphp
-            <a href="{{ route('experience.retail', ['category' => $slug]) }}" class="rounded-full px-4 py-2 transition shrink-0 {{ request('category') === $slug ? 'bg-blue-600 text-white shadow' : 'bg-white border border-slate-200 text-slate-700 hover:border-blue-400' }}">
+            <a href="{{ route('experience.retail', ['category' => $slug]) }}" class="rounded-full px-4 py-2 whitespace-nowrap shrink-0 transition {{ request('category') === $slug ? 'bg-blue-600 text-white shadow-xs border border-blue-600' : 'bg-white border border-slate-200 text-slate-700 hover:border-blue-400' }}">
                 {{ $col->translateAttribute('name') }}
             </a>
         @endforeach

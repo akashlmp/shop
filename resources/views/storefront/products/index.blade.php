@@ -30,13 +30,13 @@
     <!-- Category Pills Strip -->
     <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2">
         <a href="{{ route('products.index') }}"
-           class="rounded-full px-4 py-2 text-xs font-bold whitespace-nowrap transition {{ !request('category') ? 'bg-blue-600 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 hover:border-slate-400' }}">
+           class="rounded-full px-4 py-2 text-xs font-semibold whitespace-nowrap shrink-0 transition {{ !request('category') ? 'bg-blue-600 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 hover:border-slate-400' }}">
             All Hardware ({{ $products->total() }})
         </a>
         @foreach ($collections as $collection)
             @php $slug = $collection->urls->first()?->slug; @endphp
             <a href="{{ route('products.index', ['category' => $slug]) }}"
-               class="rounded-full px-4 py-2 text-xs font-semibold whitespace-nowrap transition {{ request('category') === $slug ? 'bg-blue-600 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 hover:border-blue-400' }}">
+               class="rounded-full px-4 py-2 text-xs font-semibold whitespace-nowrap shrink-0 transition {{ request('category') === $slug ? 'bg-blue-600 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 hover:border-blue-400' }}">
                 {{ $collection->translateAttribute('name') }}
             </a>
         @endforeach
